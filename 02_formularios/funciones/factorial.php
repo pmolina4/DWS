@@ -12,3 +12,4 @@ function factorial(int $numero)
     }
     return $resultado;
 }
+?>
