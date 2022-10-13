@@ -10,7 +10,7 @@
 
     $d = date("l");
 
-    switch($d) {
+    /*switch($d) {
         case "Monday": 
             $dia = "Lunes";
             break;
@@ -20,7 +20,14 @@
         case "Thursday":
             $dia = "Jueves";
             break;
-    }
+    }*/
+
+    $dia = match($d) {
+        "Monday" => "Lunes",
+        "Tuesday" => "Martes",
+        "Wednesday" => "Miércoles",
+        "Thursday" => "Jueves"
+    };
 
     $ndia = date("j");
 

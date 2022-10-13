@@ -7,14 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="ejercicio3_respuesta.php" method="get">
-        <label>Nombre</label><br>
-        <input type="text" name="nombre"><br><br>
-        <label>Edad</label><br>
-        <input type="text" name="edad"><br><br>
+    <form action="ejercicio6_respuesta.php" method="get">
+        <label>Número</label><br>
+        <input type="text" name="numero"><br><br>
         <input type="submit" value="Enviar">
     </form>
 
-    <p><a href="index.php">Volver a la página principal</a></p>
+    <?php 
+        require 'footer.php';
+    ?>
 </body>
 </html>
