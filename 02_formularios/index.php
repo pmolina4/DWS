@@ -97,7 +97,7 @@
 
     <div>
         <h2>
-            <a href="ejercicio4.php">Ejercicio 4</a>
+            <a>Ejercicio 4</a>
         </h2>
         <p>Crear un formulario que reciba una frase y un número del 1 al 6. Habrá que mostrar la frase en un encabezado
             de dicho número.</p>
@@ -105,7 +105,7 @@
 
     <div>
         <h2 id="ej5">
-            <a href="ejercicio5.php">Ejercicio 5</a>
+            <a>Ejercicio 5</a>
         </h2>
         <p>Formulario que reciba dos números. Devolver el resultado de elevar el primero al segundo. Asegurarse de que
             funciona con cualquier valor válido. No se admiten exponentes negativos.</p>
@@ -136,7 +136,7 @@
 
     <div>
         <h2 id="ej6">
-            <a href="ejercicio6.php">Ejercicio 6</a>
+            <a>Ejercicio 6</a>
         </h2>
         <p>Formulario que reciba un número. Devolver el factorial de dicho número.</p>
         <form action="#ej6" method="post">
@@ -152,10 +152,10 @@
                 require 'funciones/factorial.php';
                 $numero = $_POST["numero"];
                 $resultado = factorial($numero);
-                if($resultado == -1){
-                    echo"<p>El resultado no puede ser negatico</p>";
-                }else{
-                    echo"<p>El factorial es $resultado</p>";
+                if ($resultado == -1) {
+                    echo "<p>El resultado no puede ser negatico</p>";
+                } else {
+                    echo "<p>El factorial es $resultado</p>";
                 }
             }
         }
