@@ -33,10 +33,10 @@
                 require 'funciones.php';
                 $a = $_GET['a'];
                 $b = $_GET['b'];
-                $contador=$b+1;
+                $contador = $b + 1;
                 do {
                     if (esPrimo($contador)) {
-                        echo"$contador <br>";
+                        echo "$contador <br>";
                         $a = $a - 1;
                     }
                     $contador++;
@@ -84,18 +84,19 @@
         </p>
 
         <?php
+                    echo "<table><tr>";
+
         for ($i = 1; $i < 11; $i++) {
-            echo "<table>";
-            echo "<tr> 
-                    <th> Tabla del $i </th>
-                </tr>";
-            for ($j = 0; $j < 10; $j++) {
-                echo "<tr>
-                    <td>$i x $j = " .  $i * $j . "</td>
-                    </tr>";
+            echo "<th> Tabla del $i </th>";
+            echo"<tr>";
+            for ($j=0; $j <11 ; $j++) {  
+                echo "<td> $i x $j = " .$i*$j. "</td>";
             }
-            echo "</table>";
+            echo"</tr>";
         }
+        echo"</tr>";
+        echo "</table>";
+
         ?>
     </div>
 
