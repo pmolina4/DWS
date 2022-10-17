@@ -1,4 +1,11 @@
-table {
-    border-bottom: 1px solid #ddd;
-    background-color: aqua;
-  }
+table{
+  border-style: solid;
+}
+
+th{
+  background-color: aqua;
+}
+
+td{
+  background-color: aquamarine;
+}

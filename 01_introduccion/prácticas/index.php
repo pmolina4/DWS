@@ -84,19 +84,22 @@
         </p>
 
         <?php
-                    echo "<table><tr>";
-
-        for ($i = 1; $i < 11; $i++) {
-            echo "<th> Tabla del $i </th>";
-            echo"<tr>";
-            for ($j=0; $j <11 ; $j++) {  
-                echo "<td> $i x $j = " .$i*$j. "</td>";
-            }
-            echo"</tr>";
+        echo "<table>";
+        echo "<tr>";
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<th id="."tabla$i".">Tabla del $i </th>";
         }
-        echo"</tr>";
+        echo "</tr>";
+        echo "<tr>";
+        for ($j = 1; $j <= 10; $j++) {
+            for ($i = 01; $i <= 10; $i++) {
+                echo "<td>$i X $j =";
+                echo ($i * $j);
+                echo "</td>";
+            }
+            echo "</tr>";
+        }
         echo "</table>";
-
         ?>
     </div>
 
