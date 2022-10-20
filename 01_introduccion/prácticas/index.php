@@ -12,7 +12,7 @@
 <body>
     <h1>Ejercicios</h1>
 
-    <div>
+    <div class="div1">
         <h2 id="ej1">Ejercicio 1</h2>
         <p>Un número primo es aquel que sólo es divisible entre sí mismo y 1. Crea un formulario que reciba dos números
             “a”
@@ -46,7 +46,7 @@
         ?>
     </div>
 
-    <div>
+    <div class="div2">
         <h2 id="ej2">Ejercicio 2</h2>
         <p>Crea un formulario que compruebe si un DNI es válido. Un DNI es válido si:
             Está formado por 8 dígitos seguidos de una letra (mayúscula o minúscula)
@@ -77,7 +77,7 @@
         ?>
     </div>
 
-    <div>
+    <div class="d3">
         <h2 id="ej3">Ejercicio 3</h2>
         <p>Genera de manera dinámica las tablas de multiplicar del 1 al 10. El resultado debe ser parecido al siguiente
             y estar estructurado mediante tablas HTML.
