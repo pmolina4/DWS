@@ -83,7 +83,7 @@
         if (empty($fechaNaciemitno)) {
             $errorFecha = "La fecha es obligatoria";
         }else{
-            $patron_fecha = "/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/";
+            $patron_fecha = "/^[0-3][0-9]\/[0-1][0-9]\/(19|20)[0-9]{2}$/";
             if (preg_match($patron_fecha, $fechaNaciemitno)) {
                 echo "Fecha válida";
             } else {
