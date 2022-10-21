@@ -65,7 +65,7 @@
             if ($_GET["f"] == "ej2") {
 
                 $dni = $_GET['dni'];
-                $letra = substr($dni, -1);
+                $letra = strtoupper(substr($dni, -1));
                 $numeros = substr($dni, 0, -1);
                 if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) == $letra && strlen($letra) == 1 && strlen($numeros) == 8) {
                     echo 'valido';

@@ -102,9 +102,9 @@
     //Funcion depurar
     function depurar($dato)
     {
-        $dato = trim($dato);
-        $dato = stripslashes($dato);
-        $dato = htmlspecialchars($dato);
+        $dato = trim($dato);//quita los espacios pricipio y final 
+        $dato = stripslashes($dato);// quita barras de la izquierda \
+        $dato = htmlspecialchars($dato);//para que no se pueda meter codigo html
         return $dato;
     }
     ?>
