@@ -22,12 +22,14 @@
         $regexp = '/^[a-z0-9]+$/i';
         $numbers = substr($dni, 0, -1);
         $letter = substr($dni, -1);
+        $datos ="";
         //COmprobar DNI
         if (!empty($dni)) {
             if (
                 preg_match($patron_dni, $dni) &&
                 substr("TRWAGMYFPDXBNJZSQVHLCKE", $numbers % 23, 1) == $letter && strlen($letter) == 1 && strlen($numbers) == 8
             ) {
+                $datos .= $dni;
             } else {
                 $errorvalido = "El dni no es válido ";
             }
@@ -42,14 +44,17 @@
             if (!$resultadoNombre) {
                 $errorNombre = "Nombre no válido";
             } else {
+                $datos .= $nombre;
             }
             if (!$resultadoApellido1) {
                 $errorApellido1 = "Apelldio no válido";
             } else {
+                $datos .= $apellido1;
             }
             if (!$resultadoApellido2) {
                 $errorApellido2 = "Apellido no válido";
             } else {
+                $datos .= $apelldio2;
             }
         } else {
             $errorObligatorio = "Campo Obligatorio";
@@ -60,32 +65,36 @@
                 echo '<script language="javascript">alert("No apto para menores de 18");</script>';
                 $errorMenorEdad = "La edad no puede ser menor de 18";
             }
-            if ($edad < 0 ) {
-                $errornegativo ="La edad debe de ser mayor a 0";
+            if ($edad < 0) {
+                $errornegativo = "La edad debe de ser mayor a 0";
             }
-            if ($edad >120) {
+            if ($edad > 120) {
                 $errorEdadmax = "La edad no puede ser superior a 120";
             }
+            $datos .= $edad;
         } else {
             $errorEdad = "Campo Obligatorio";
         }
         //Comrpobar email
-        $palabras = array("loco","feo","cabron");
+        $palabras = array("loco", "feo", "cabron");
         if (!empty($email)) {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL) || array_contains($email, $palabras)) {
                 $errorvalidarEmail = "Email no válido";
+            } else {
+                $datos .= $email;
             }
         } else {
             $errorEmail = "Campo Obligatorio";
         }
     }
+
     //funcion para comprobar si contiene una palabra
     function array_contains($str, array $arr)
     {
         foreach ($arr as $a) {
-            if (str_contains($str, $a) !== false){
+            if (str_contains($str, $a) !== false) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
@@ -121,7 +130,7 @@
             </span>
         </p>
         <p>
-            Edad: <input type="number" name="edad" >
+            Edad: <input type="number" name="edad">
             <span class="error">
                 *<?php if (isset($errorEdad)) echo $errorEdad ?>
                 <?php if (isset($errorMenorEdad)) echo $errorMenorEdad ?>
@@ -134,9 +143,15 @@
             Email: <input type="text" name="email">
             <span class="error">
                 *<?php if (isset($errorEmail)) echo $errorEmail ?>
-                 <?php if (isset($errorvalidarEmail)) echo $errorvalidarEmail ?>
+                <?php if (isset($errorvalidarEmail)) echo $errorvalidarEmail ?>
             </span>
         </p>
+        <label for="mensaje">Datos</label>
+        <textarea name="mensaje" for="mensaje" maxlength="300">
+            <?php
+                if(isset($datos)) echo $datos
+            ?>
+        </textarea>
         <input type="submit" value="Enviar">
     </form>
 </body>

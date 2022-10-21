@@ -62,15 +62,13 @@
 
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            if ($_GET["f"] == "ej2") {
-
+            if ($_GET["f"] == "ej2") {  
+                require 'funciones.php';
                 $dni = $_GET['dni'];
-                $letra = strtoupper(substr($dni, -1));
-                $numeros = substr($dni, 0, -1);
-                if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) == $letra && strlen($letra) == 1 && strlen($numeros) == 8) {
-                    echo 'valido';
-                } else {
-                    echo 'no valido';
+                if (dniValido($dni)) {
+                    echo "dni valido";
+                }else{
+                    echo "dni no valido";
                 }
             }
         }
