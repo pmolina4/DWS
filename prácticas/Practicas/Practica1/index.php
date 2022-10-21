@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>Ejercicios</h1>
+    <h1>Práctica 1</h1>
 
     <div class="div1">
         <h2 id="ej1">Ejercicio 1</h2>

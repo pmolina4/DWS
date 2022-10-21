@@ -29,7 +29,7 @@
                 preg_match($patron_dni, $dni) &&
                 substr("TRWAGMYFPDXBNJZSQVHLCKE", $numbers % 23, 1) == $letter && strlen($letter) == 1 && strlen($numbers) == 8
             ) {
-                $datos .= $dni;
+                $datos .= $dni.=" ";
             } else {
                 $errorvalido = "El dni no es válido ";
             }
@@ -44,17 +44,17 @@
             if (!$resultadoNombre) {
                 $errorNombre = "Nombre no válido";
             } else {
-                $datos .= $nombre;
+                $datos .= $nombre.= " ";
             }
             if (!$resultadoApellido1) {
                 $errorApellido1 = "Apelldio no válido";
             } else {
-                $datos .= $apellido1;
+                $datos .= $apellido1.= " ";
             }
             if (!$resultadoApellido2) {
                 $errorApellido2 = "Apellido no válido";
             } else {
-                $datos .= $apelldio2;
+                $datos .= $apelldio2.= " ";
             }
         } else {
             $errorObligatorio = "Campo Obligatorio";
@@ -71,7 +71,7 @@
             if ($edad > 120) {
                 $errorEdadmax = "La edad no puede ser superior a 120";
             }
-            $datos .= $edad;
+            $datos .= $edad.=" ";
         } else {
             $errorEdad = "Campo Obligatorio";
         }
@@ -100,6 +100,7 @@
         }
     }
     ?>
+    <h1>Práctica 2</h1>
     <form action="" method="POST">
         <p>
             DNI: <input type="text" name="dni">
