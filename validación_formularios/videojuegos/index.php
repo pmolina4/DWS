@@ -22,32 +22,23 @@
         }
         $temp_descripcion = $_POST["descripcion"];
 
-
-        //funcion para comprobar si contiene una ext
-        function array_contains($str, array $arr)
-        {
-            foreach ($arr as $a) {
-                if (str_contains($str, $a) !== false) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-
-
         //Ficheros / IMAGENES
-
         //VARIABLES
         $file_temp_name = $_FILES["imagen"]["tmp_name"];
-        $extensiones = array(".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG");
         $file_name = $_FILES["imagen"]["name"];
         //Validación imagen
         if (empty($file_name)) {//validar que se introduzaca un fichero
             $err_fichero = "El fichero es obligatorio";
         } else {
             $path = "./images/" . $file_name;
-            if (!array_contains($file_name, $extensiones)) {//verificar que la extension es la correcta
+            $ext = pathinfo($file_name,PATHINFO_EXTENSION);//sacar la ext del fichero
+            $extensiones_validas = match($ext){
+                "jpg" => true,
+                "png" => true,
+                "jpeg" => true,
+                default => false
+            };
+            if ($extensiones_validas) {//verificar que la extension es la correcta
                 $file_size = $_FILES["imagen"]["size"];
                 if ($file_size > 1000000) {//verificar que no se sube mas de 1mg
                     $err_size = "No puede superar 1MG";
