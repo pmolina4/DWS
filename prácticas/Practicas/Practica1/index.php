@@ -33,7 +33,7 @@
                 require 'funciones.php';
                 $a = $_GET['a'];
                 $b = $_GET['b'];
-                $contador = $b + 1;
+                $contador = $b ;// no hay que ponbner +1 empieza posición siguiente
                 do {
                     if (esPrimo($contador)) {
                         echo "$contador <br>";
