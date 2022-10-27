@@ -2,15 +2,13 @@
 
 function Calificacion(int $nota){
 
-    match ($nota) {
-        $nota >= 0 && $nota <= 4 => 'suspenso',
-        $nota >=5 && $nota <=6 => 'aprobado',
-        $nota >= 7 && $nota <=8 => 'notable',
-        $nota >= 9 && $nota <= 10 => 'sobresaliente', 
+    return match ($nota) {
+        0,1,2,3,4 => 'suspenso',
+        5,6 => 'aprobado',
+        7,8 => 'notable',
+        9,10 => 'sobresaliente', 
         default => 'Sin calificar',
     };
-
-    return $nota;
 }
 
 ?>
