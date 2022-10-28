@@ -19,17 +19,23 @@
             <div class="col-6">
                 <h1>Videojuegos</h1>
                 <form action="ejercicio_videojuegos.php" method="post">
-                    <label>Nombre:</label><br>
-                    <input type="text" name="nombre"><br><br>
-                    <label>Consola</label><br>
-                    <select name="consola">
-                        <option value="ps4">PS4</option>
-                        <option value="ps5">PS5</option>
-                        <option value="switch">Switch</option>
-                    </select><br><br>
-                    <label>¿Edición especial?</label><br>
-                    <input type="checkbox" name="especial" value="si"><br><br>
-                    <input type="submit" value="Enviar">
+                    <div>
+                        <label class="form-label">Nombre:</label><br>
+                        <input type="text" name="nombre" class="form-control"><br>
+
+                        <label class="form-label">Consola</label><br>
+                        <select name="consola" class="form-select">
+                            <option value="ps4">PS4</option>
+                            <option value="ps5">PS5</option>
+                            <option value="switch">Switch</option>
+                        </select><br>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">¿Edición Especial?</label>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-secondary">Enviar</button>
+                    </div>
                 </form>
 
                 <?php
