@@ -97,31 +97,33 @@
         </tr>
     </table>
 
-    <h2>Ejercicio 3</h2>
-    <table class="table table-success table-striped">
-        <tr>
-            <th>Numeros Indivisibles de 3</th>
-        </tr>
-        <?php
-        $numeros = [];
-        for ($i = 1; $i <= 50; $i++) {
-            $numeros[$i] = $i;
-        }
-        foreach ($numeros as $key => $valor) {
-            if ($key % 3 == 0) {
-                unset($numeros[$valor]);
-            }
-        }
-        foreach ($numeros as $key => $value) {
-        ?>
+    <div class="container">
+        <h2>Ejercicio 3</h2>
+        <table class="table table-success table-striped">
             <tr>
-                <td><?php echo $value . "<br>"; ?></td>
+                <th>Numeros Indivisibles de 3</th>
             </tr>
-        <?php
-        }
+            <?php
+            $numeros = [];
+            for ($i = 1; $i <= 50; $i++) {
+                $numeros[$i] = $i;
+            }
+            foreach ($numeros as $key => $valor) {
+                if ($key % 3 == 0) {
+                    unset($numeros[$valor]);
+                }
+            }
+            foreach ($numeros as $key => $value) {
+            ?>
+                <tr>
+                    <td><?php echo $value . "<br>"; ?></td>
+                </tr>
+            <?php
+            }
 
-        ?>
-    </table>
+            ?>
+        </table>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 
