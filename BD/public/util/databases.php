@@ -1,9 +1,11 @@
 <?php
     $servidor = 'localhost';
     $usuario = 'root';
-    $contrasena = '';
+    $contrasena = 'root';
     $base_de_datos = 'db_tienda_ropa';
 
+
+    
     //MySQLi
 
     //creamos la variable con la conexion a la bd 

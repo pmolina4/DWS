@@ -11,6 +11,8 @@
 
 <body>
     <div class="container">
+        <?php require '../header.php' ?>
+        <br>
         <h1>Listado de prendas</h1>
         <div class="row">
             <div class="col-9">
@@ -20,11 +22,12 @@
                             <th>Nombre</th>
                             <th>Talla</th>
                             <th>Precio</th>
+                            <th>Categoria</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        require 'util/databases.php';
+                        require '../util/databases.php';
                         $sql = "SELECT * FROM ropa";
                         $resultado = $conexion->query($sql);
                         //el resultado de la consulta tiene mas de 0 filas entomces..
@@ -35,11 +38,13 @@
                                 $nombre = $row["nombre"];
                                 $talla = $row["talla"];
                                 $precio = $row["precio"];
+                                $categoria = $row["categoria"];
                         ?>
                                 <tr>
                                     <td><?php echo $nombre ?></td>
                                     <td><?php echo $talla ?></td>
                                     <td><?php echo $precio ?></td>
+                                    <td><?php echo $categoria ?></td>
                                 </tr>
                         <?php
                             }
@@ -50,6 +55,7 @@
                 </table>
             </div>
         </div>
+        <a href="insertar_prenda.php" class="btn btn-primary">Insertar Nueva Prenda</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
