@@ -44,7 +44,8 @@
                                     <td><?php echo $nombre ?></td>
                                     <td><?php echo $talla ?></td>
                                     <td><?php echo $precio ?></td>
-                                    <td><?php echo $categoria ?></td>
+                                    <!-- Pasamos por url la categoria -->
+                                    <td><?php echo "<a href=filtrado_ropa.php?cat=$categoria> $categoria</a>" ?></td>
                                 </tr>
                         <?php
                             }
