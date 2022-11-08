@@ -27,7 +27,10 @@
                     VALUES('$usuario', '$nombre','$apellido1','$apellido2','$fechaNacimiento')";
             //si la sentencia se ejecuta correctamente mostramos ok si no pues no
             if ($conexion->query($sql) == "TRUE") {
-                echo "<p>Cliente Insertado</p>";
+                echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <strong>Cliente</strong> Insertado Correctamente!.
+                <button type='button' class='btn-close' data-bs-dismiss='alert'aria-label='Close'></button>
+              </div>";
             } else {
                 echo "<p>Error al insertar</p>";
             }
@@ -39,7 +42,6 @@
         <?php require '../header.php' ?>
         <br>
         <h1>Nuevo Cliente</h1>
-
         <div class="row">
             <div class="col-6">
                 <form action="" method="POST">
