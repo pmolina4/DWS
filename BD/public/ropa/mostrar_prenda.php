@@ -19,59 +19,44 @@
                 <table class="table  table-striped table-hover">
                     <thead class="table-dark">
                         <tr class="table-active">
+                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Talla</th>
                             <th>Precio</th>
                             <th>Categoria</th>
-                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         require '../util/databases.php';
-                        //BORRAR PRENDA
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if (isset($_POST['eliminar'])) {
-                                $identificador = $_POST['id'];
-                                $sql = "DELETE FROM ropa WHERE id=$identificador";
-                                if ($conexion->query($sql) == "TRUE") {
-                                    echo "<p>Prenda eliminada</p>";
-                                } else {
-                                    echo "<p>Error al elimiar</p>";
-                                }
-                            }
+
+                        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                            $id = $_GET["id"];
                         }
-                        ?>
-                        <?php
-                        $sql = "SELECT * FROM ropa";
+
+                        $sql = "SELECT * FROM ropa where id=$id";
                         $resultado = $conexion->query($sql);
                         //el resultado de la consulta tiene mas de 0 filas entomces..
                         if ($resultado->num_rows > 0) {
                             //mientras que se obtengas filas en la row pues mostramos
                             while ($row = $resultado->fetch_assoc()) {
                                 //guardamos los valores en variables
+                                $id = $row["id"];
                                 $nombre = $row["nombre"];
                                 $talla = $row["talla"];
                                 $precio = $row["precio"];
                                 $categoria = $row["categoria"];
                         ?>
                                 <tr>
+                                    <td><?php echo $id ?></td>
                                     <td><?php echo $nombre ?></td>
                                     <td><?php echo $talla ?></td>
                                     <td><?php echo $precio ?></td>
-                                    <!-- Pasamos por url la categoria -->
-                                    <td><?php echo "<a href=filtrado_ropa.php?cat=$categoria> $categoria</a>" ?></td>
+                                    <td><?php echo$categoria?></td>
                                     <td>
-                                        <form action="mostrar_prenda.php" method="GET">
-                                            <button class="btn btn-primary" type="submit">Ver</button>
-                                            <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="" method="POST">
-                                            <button class="btn btn-danger" name="eliminar" type="submit">Borrar</button>
-                                            <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
+                                        <form action="index.php" method="get">
+                                            <button class="btn btn-primary" type="submit">Volver</button>
                                         </form>
                                     </td>
                                 </tr>
