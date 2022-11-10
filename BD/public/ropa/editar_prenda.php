@@ -6,61 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Nueva Prenda</title>
+    <title>Editar Prenda</title>
 </head>
 
 <body>
-    <?php
-    //importamos fichero para la conexion de la bd
-    require '../util/databases.php';
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nombre = $_POST["nombre"];
-        $talla = $_POST['talla'];
-        $precio = $_POST["precio"];
-        $categoria = $_POST['categoria'];
-        //imageness
-        $file_name = $_FILES["imagen"]["name"]; //primer parametro el id del imput segundo la propoedad que queremos sacar
-        $file_temp_name = $_FILES["imagen"]["tmp_name"];
-        $path = "../resources/ropa/" . $file_name;
-
-        //comprobamos que los datos se han introducido en el formulario
-        if (!empty($nombre) && !empty($talla) && !empty($talla) && !empty($categoria)) {
-            //Comprobamos que el fichero se ha movido con éxito 
-            if (move_uploaded_file($file_temp_name, $path)) {
-                echo "<p>Fichero movido con exito</p>";
-            } else {
-                echo "<p>No se ha podido mover el fichero</p>";
-            }
-
-            //creamos la sentencia SQL
-            $sql = "INSERT INTO ropa (nombre, talla, precio, categoria, imagen)
-                    VALUES('$nombre', '$talla','$precio','$categoria', '$path')";
-
-            //si la sentencia se ejecuta correctamente mostramos ok si no pues no
-            if ($conexion->query($sql) == "TRUE") {
-                echo "<p>Prenda Insertada</p>";
-            } else {
-                echo "<p>Error al insertar</p>";
-            }
-        }
-    }
-    ?>
-
     <div class="container">
         <?php require '../header.php' ?>
         <br>
-        <h1>Nueva Prenda</h1>
+        <h1>Editar Prenda</h1>
+        <?php
 
+        require '../util/databases.php';
+        //Recojo el id del form de mostrar prenda
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $id = $_GET["edit"];
+        }
+
+        //Hacemos la consulta en la bd de el producto con ese id
+        $sql = "SELECT * FROM ropa where id=$id";
+        $resultado = $conexion->query($sql);
+        //el resultado de la consulta tiene mas de 0 filas entomces..
+        if ($resultado->num_rows > 0) {
+            //mientras que se obtengas filas en la row pues mostramos
+            while ($row = $resultado->fetch_assoc()) {
+                //guardamos los valores en variables
+                $id = $row["id"];
+                $nombre = $row["nombre"];
+                $talla = $row["talla"];
+                $precio = $row["precio"];
+                $categoria = $row["categoria"];
+                $imagen = $row["imagen"];
+            }
+        }
+
+        ?>
         <div class="row">
             <div class="col-6">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <label class="form-label">Nombre</label>
-                    <input type="text" class="form-control" name="nombre">
+                    <input type="text" class="form-control" name="nombre" value="<?php echo $nombre ?>">
                     <br>
                     <label class="form-label">Talla</label>
                     <select name="talla" id="talla" class="form-select">
-                        <option value="" selected disabled hidden>Selecciona una talla</option>
+                        <option value="<?php echo $talla ?>" selected><?php echo $talla ?></option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
                         <option value="M">M</option>
@@ -69,11 +57,11 @@
                     </select>
                     <br>
                     <label class="form-label">Precio</label>
-                    <input type="text" class="form-control" name="precio">
+                    <input type="text" class="form-control" name="precio" value="<?php echo $precio ?>">
                     <br>
                     <label class="form-label">Categoria</label>
                     <select name="categoria" id="categoria" class="form-select">
-                        <option value="" selected default hidden>Seleccione una categoria</option>
+                        <option value="<?php echo $categoria ?>" selected default><?php echo $categoria ?></option>
                         <option value="camisetas">CAMISETAS</option>
                         <option value="pantalones">PANTALONES</option>
                         <option value="accesorios">ACCESORIOS</option>
@@ -82,7 +70,7 @@
                     <label class="form-label">Imagen</label>
                     <input type="file" class="form-control" name="imagen">
                     <br>
-                    <button class="btn btn-primary" type="submit">Crear</button>
+                    <a class="btn btn-primary" type="submit">Editar</button>
                     <a class="btn btn-secondary" href="index.php">Volver</a>
                 </form>
             </div>
@@ -90,6 +78,7 @@
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

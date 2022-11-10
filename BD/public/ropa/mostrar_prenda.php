@@ -24,6 +24,8 @@
                             <th>Talla</th>
                             <th>Precio</th>
                             <th>Categoria</th>
+                            <th>Imagen</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -47,16 +49,23 @@
                                 $talla = $row["talla"];
                                 $precio = $row["precio"];
                                 $categoria = $row["categoria"];
+                                $imagen = $row["imagen"];
                         ?>
                                 <tr>
                                     <td><?php echo $id ?></td>
                                     <td><?php echo $nombre ?></td>
                                     <td><?php echo $talla ?></td>
                                     <td><?php echo $precio ?></td>
-                                    <td><?php echo$categoria?></td>
+                                    <td><?php echo $categoria ?></td>
+                                    <td><img src="<?php echo $imagen ?>" width="50" height="50" class="zoom"></td>
                                     <td>
                                         <form action="index.php" method="get">
                                             <button class="btn btn-primary" type="submit">Volver</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="editar_prenda.php" method="get">
+                                            <button class="btn btn-primary" type="submit" name="edit" value="<?php echo $row["id"] ?>">Editar</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -64,7 +73,6 @@
                             }
                         }
                         ?>
-
                     </tbody>
                 </table>
             </div>

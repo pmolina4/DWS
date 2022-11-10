@@ -25,6 +25,7 @@
                             <th>Categoria</th>
                             <th></th>
                             <th></th>
+                            <th>Imagen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +34,20 @@
                         //BORRAR PRENDA
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             if (isset($_POST['eliminar'])) {
+                                //cogemos el identificador al que le hemos dado que seria el id que tiene en la bd
                                 $identificador = $_POST['id'];
+
+                                //Borrado del fichero de la carpeta 
+                                $sql2 = "SELECT imagen FROM ropa where id=$identificador";
+                                $resultado = $conexion->query($sql2);
+                                if ($resultado->num_rows > 0) {
+                                    while ($row = $resultado->fetch_assoc()) {
+                                        $rutaImg = $row["imagen"];
+                                    }
+                                }
+                                unlink($rutaImg);
+
+                                //Borrado de la bd 
                                 $sql = "DELETE FROM ropa WHERE id=$identificador";
                                 if ($conexion->query($sql) == "TRUE") {
                                     echo "<p>Prenda eliminada</p>";
@@ -55,6 +69,7 @@
                                 $talla = $row["talla"];
                                 $precio = $row["precio"];
                                 $categoria = $row["categoria"];
+                                $imagen = $row["imagen"];
                         ?>
                                 <tr>
                                     <td><?php echo $nombre ?></td>
@@ -74,6 +89,7 @@
                                             <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                         </form>
                                     </td>
+                                    <td><img src="<?php echo $imagen?>" width="50" height="50"></td>
                                 </tr>
                         <?php
                             }
