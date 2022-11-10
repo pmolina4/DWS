@@ -20,23 +20,53 @@
         //Recojo el id del form de mostrar prenda
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $id = $_GET["edit"];
-        }
-
-        //Hacemos la consulta en la bd de el producto con ese id
-        $sql = "SELECT * FROM ropa where id=$id";
-        $resultado = $conexion->query($sql);
-        //el resultado de la consulta tiene mas de 0 filas entomces..
-        if ($resultado->num_rows > 0) {
-            //mientras que se obtengas filas en la row pues mostramos
-            while ($row = $resultado->fetch_assoc()) {
-                //guardamos los valores en variables
-                $id = $row["id"];
-                $nombre = $row["nombre"];
-                $talla = $row["talla"];
-                $precio = $row["precio"];
-                $categoria = $row["categoria"];
+            //Hacemos la consulta en la bd de el producto con ese id
+            $sql = "SELECT * FROM ropa where id=$id";
+            $resultado = $conexion->query($sql);
+            //el resultado de la consulta tiene mas de 0 filas entomces..
+            if ($resultado->num_rows > 0) {
+                //mientras que se obtengas filas en la row pues mostramos
+                while ($row = $resultado->fetch_assoc()) {
+                    //guardamos los valores en variables
+                    $id = $row["id"];
+                    $nombre = $row["nombre"];
+                    $talla = $row["talla"];
+                    $precio = $row["precio"];
+                    $categoria = $row["categoria"];
+                }
             }
         }
+
+        //REcogemos valores POST de la pagina de mostrarprenda
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $id2 = $_POST["id"];
+
+
+            $nombre2 = $_POST["nombre"];
+            $talla2 = $_POST["talla"];
+            $precio2 = $_POST["precio"];
+            $categoria2 = $_POST["categoria"];
+
+
+            echo $id2;
+            $sql3 = "UPDATE ropa  SET  nombre = '$nombre2', 
+                                        talla = '$talla2',
+                                        precio = '$precio2',
+                                        categoria = '$categoria2'
+                                     WHERE id = '$id2'";
+
+            if ($conexion->query($sql3) == "TRUE") {
+                echo "<p>Registro modificado</p>";
+                $nombre = $_POST["nombre"];
+                $talla = $_POST["talla"];
+                $precio = $_POST["precio"];
+                $categoria = $_POST["categoria"];
+            } else {
+                echo "<p>Error al modificar</p>";
+            }
+        }
+
+
 
         ?>
         <div class="row">
@@ -66,7 +96,7 @@
                         <option value="accesorios">ACCESORIOS</option>
                     </select>
                     <br>
-                    <input type="hidden" name="id" value="<?php  echo $id?>">
+                    <input type="hidden" name="id" value="<?php echo $id ?>">
                     <button class="btn btn-primary" type="submit">Modificar</button>
                     <a class="btn btn-secondary" href="index.php">Volver</a>
                 </form>

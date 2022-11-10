@@ -74,9 +74,9 @@
                     <label class="form-label">Categoria</label>
                     <select name="categoria" id="categoria" class="form-select">
                         <option value="" selected default hidden>Seleccione una categoria</option>
-                        <option value="camisetas">CAMISETAS</option>
-                        <option value="pantalones">PANTALONES</option>
-                        <option value="accesorios">ACCESORIOS</option>
+                        <option value="CAMISETAS">CAMISETAS</option>
+                        <option value="PANTALONES">PANTALONES</option>
+                        <option value="ACCESORIOS">ACCESORIOS</option>
                     </select>
                     <br>
                     <label class="form-label">Imagen</label>

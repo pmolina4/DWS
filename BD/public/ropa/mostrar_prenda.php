@@ -64,7 +64,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="editar_prenda.php" method="get">
+                                        <form action="editar_prenda.php" method="GET">
                                             <button class="btn btn-primary" type="submit" name="edit" value="<?php echo $row["id"] ?>">Editar</button>
                                         </form>
                                     </td>
