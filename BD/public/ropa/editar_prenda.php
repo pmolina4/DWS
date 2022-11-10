@@ -35,7 +35,6 @@
                 $talla = $row["talla"];
                 $precio = $row["precio"];
                 $categoria = $row["categoria"];
-                $imagen = $row["imagen"];
             }
         }
 
@@ -67,10 +66,8 @@
                         <option value="accesorios">ACCESORIOS</option>
                     </select>
                     <br>
-                    <label class="form-label">Imagen</label>
-                    <input type="file" class="form-control" name="imagen">
-                    <br>
-                    <a class="btn btn-primary" type="submit">Editar</button>
+                    <input type="hidden" name="id" value="<?php  echo $id?>">
+                    <button class="btn btn-primary" type="submit">Modificar</button>
                     <a class="btn btn-secondary" href="index.php">Volver</a>
                 </form>
             </div>

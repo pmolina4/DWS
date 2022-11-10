@@ -15,6 +15,22 @@
     require '../util/databases.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //Imagen avatar
+        $file_name = $_FILES["avatar"]["name"];
+        $file_temp_name = $_FILES["avatar"]["tmp_name"];
+
+        if (empty($file_name)) {
+            $path = "../resources/cliente/avatarDefecto.png";
+        }else{
+            $path = "../resources/cliente/". $file_name;
+            if (move_uploaded_file($file_temp_name, $path)) {
+                echo "<p>Fichero movido con exito</p>";
+            } else {
+                echo "<p>No se ha podido mover el fichero</p>";
+            }
+        }
+
+        //resto de datos del formulario
         $usuario = $_POST["usuario"];
         $nombre = $_POST["nombre"];
         $apellido1 = $_POST['apellido1'];
@@ -23,8 +39,8 @@
         //comprobamos que los datos se han introducido en el formulario
         if (!empty($nombre) && !empty($usuario) && !empty($apellido1) && !empty($apellido2) && !empty($fechaNacimiento)) {
             //creamos la sentencia SQL
-            $sql = "INSERT INTO cliente (usuario, nombre, apellido1, apellido2, fecha_nacimiento)
-                    VALUES('$usuario', '$nombre','$apellido1','$apellido2','$fechaNacimiento')";
+            $sql = "INSERT INTO cliente (usuario, nombre, apellido1, apellido2, fecha_nacimiento,imagen)
+                    VALUES('$usuario', '$nombre','$apellido1','$apellido2','$fechaNacimiento','$path')";
             //si la sentencia se ejecuta correctamente mostramos ok si no pues no
             if ($conexion->query($sql) == "TRUE") {
                 echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
@@ -44,7 +60,9 @@
         <h1>Nuevo Cliente</h1>
         <div class="row">
             <div class="col-6">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <label class="form-label">Avatar</label>
+                    <input type="file" class="form-control" name="avatar">  
                     <label class="form-label">Usuario</label>
                     <input type="text" class="form-control" name="usuario">
                     <br>
