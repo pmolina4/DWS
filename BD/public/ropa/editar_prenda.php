@@ -48,7 +48,6 @@
             $categoria2 = $_POST["categoria"];
 
 
-            echo $id2;
             $sql3 = "UPDATE ropa  SET  nombre = '$nombre2', 
                                         talla = '$talla2',
                                         precio = '$precio2',

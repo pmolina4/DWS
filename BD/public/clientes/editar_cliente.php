@@ -32,30 +32,29 @@
         }
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $id = $_POST["id"];
-        $sql = "SELECT * FROM cliente where id=$id";
-        $resultado = $conexion->query($sql);
-        //el resultado de la consulta tiene mas de 0 filas entomces..
-        if ($resultado->num_rows > 0) {
-            //mientras que se obtengas filas en la row pues mostramos
-            while ($row = $resultado->fetch_assoc()) {
-                //guardamos los valores en variables
-                $usuario = $row["usuario"];
-                $nombre = $row["nombre"];
-                $apellido1 = $row["apellido1"];
-                $apellido2 = $row["apellido2"];
-                $fecha_nacimiento = $row["fecha_nacimiento"];
-            }
-        }
-        $sql2 = "UPDATE cliente  SET  usuario = '$usuario', 
-                                    nombre = '$nombre',
-                                    apellido1 = '$apellido1',
-                                    apellido2 = '$apellido2',
-                                    fecha_nacimiento = '$fecha_nacimiento'
-                                WHERE id = '$id'";
+        $id2 = $_POST["id"];
+
+        $usuario2 = $_POST["usuario"];
+        $nombre2 = $_POST["nombre"];
+        $apellido12 = $_POST["apellido1"];
+        $apellido22 = $_POST["apellido2"];
+        $fecha_nacimiento2 = $_POST["fechaN"];
+
+
+        $sql2 = "UPDATE cliente  SET  usuario = '$usuario2', 
+                                    nombre = '$nombre2',
+                                    apellido1 = '$apellido12',
+                                    apellido2 = '$apellido22',
+                                    fecha_nacimiento = '$fecha_nacimiento2'
+                                WHERE id = '$id2'";
 
         if ($conexion->query($sql2) == "TRUE") {
             echo "<p>Registro modificado</p>";
+            $usuario = $_POST["usuario"];
+            $nombre = $_POST["nombre"];
+            $apellido1 = $_POST["apellido1"];
+            $apellido2 = $_POST["apellido2"];
+            $fecha_nacimiento = $_POST["fechaN"];
         } else {
             echo "<p>Error al modificar</p>";
         }
