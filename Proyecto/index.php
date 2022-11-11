@@ -56,9 +56,9 @@
                         <h5 class="card-title">Ropa</h5>
                         <p class="card-text">
                             En este apartado podrás ver toda la ropa disponible.
-                            También puedes añadir nuevas prendas , borrarlas y editarlas.            
+                            También puedes añadir nuevas prendas , borrarlas y editarlas.
                         </p>
-                        <a href="#" class="btn btn-outline-info">Visítanos</a>
+                        <a href="../Proyecto/ropa/index.php" class="btn btn-outline-info">Visítanos</a>
                     </div>
                 </div>
             </div>
@@ -94,6 +94,7 @@
 
 
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

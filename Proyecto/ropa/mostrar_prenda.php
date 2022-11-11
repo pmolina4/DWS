@@ -13,76 +13,52 @@
 <body>
     <!-- añadimos la barra de navegacion -->
     <?php require '../resources/header.php' ?>
+    <!-- RECOGEMOS LOS DATOS PARA MOSTRARLOS -->
+    <?php
+    require '../resources/util/databases.php';
+
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        $id = $_GET["id"];
+    }
+
+    $sql = "SELECT * FROM ropa where id=$id";
+    $resultado = $conexion->query($sql);
+    //el resultado de la consulta tiene mas de 0 filas entomces..
+    if ($resultado->num_rows > 0) {
+        //mientras que se obtengas filas en la row pues mostramos
+        while ($row = $resultado->fetch_assoc()) {
+            //guardamos los valores en variables
+            $id = $row["id"];
+            $nombre = $row["nombre"];
+            $talla = $row["talla"];
+            $precio = $row["precio"];
+            $categoria = $row["categoria"];
+            $imagen = $row["imagen"];
+        }
+    }
+    ?>
 
     <div class="container">
-        <div class="row mt-5 mx-auto justify-content-center">
+        <div class="row mt-5  mx-auto justify-content-center">
             <div>
                 <p class="list-group">
-                <H1>Listado De Prendas</H1>
+                <h3>Detalles De Prenda</h3>
+                <div class="card" style="width: 18rem;">
+                    <img src="<?php echo $imagen ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $nombre ?></h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><?php echo $talla ?></li>
+                            <li class="list-group-item"><?php echo $precio ?></li>
+                            <li class="list-group-item"><?php echo $categoria ?></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary">Editar</button>
+                        <button type="button" class="btn btn-secondary">Volver</button>
+                    </div>
+                </div>
                 </p>
-                <div class="row">
-            <div class="col-9">
-                <table class="table  table-striped table-hover">
-                    <thead class="table-dark">
-                        <tr class="table-active">
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Talla</th>
-                            <th>Precio</th>
-                            <th>Categoria</th>
-                            <th>Imagen</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        require '../resources/util/databases.php';
-
-                        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                            $id = $_GET["id"];
-                        }
-
-                        $sql = "SELECT * FROM ropa where id=$id";
-                        $resultado = $conexion->query($sql);
-                        //el resultado de la consulta tiene mas de 0 filas entomces..
-                        if ($resultado->num_rows > 0) {
-                            //mientras que se obtengas filas en la row pues mostramos
-                            while ($row = $resultado->fetch_assoc()) {
-                                //guardamos los valores en variables
-                                $id = $row["id"];
-                                $nombre = $row["nombre"];
-                                $talla = $row["talla"];
-                                $precio = $row["precio"];
-                                $categoria = $row["categoria"];
-                                $imagen = $row["imagen"];
-                        ?>
-                                <tr>
-                                    <td><?php echo $id ?></td>
-                                    <td><?php echo $nombre ?></td>
-                                    <td><?php echo $talla ?></td>
-                                    <td><?php echo $precio ?></td>
-                                    <td><?php echo $categoria ?></td>
-                                    <td><img src="<?php echo $imagen ?>" width="50" height="50" class="zoom"></td>
-                                    <td>
-                                        <form action="index.php" method="get">
-                                            <button class="btn btn-primary" type="submit">Volver</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="editar_prenda.php" method="GET">
-                                            <button class="btn btn-primary" type="submit" name="edit" value="<?php echo $row["id"] ?>">Editar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
             </div>
         </div>
     </div>
