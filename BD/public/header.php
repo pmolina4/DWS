@@ -13,6 +13,7 @@
       <div class="navbar-nav">
         <a class="nav-link" href="http://localhost/DWS/BD/public/ropa">ROPA</a>
         <a class="nav-link" href="http://localhost/DWS/BD/public/clientes/index.php">CLIENTES</a>
+        <a class="nav-link" href="http://localhost/DWS/BD/public/compras/index.php">COMPRAS</a>
       </div>
     </div>
   </div>
