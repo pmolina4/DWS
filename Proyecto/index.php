@@ -11,31 +11,9 @@
 </head>
 
 <body>
-    <div class="container-fluid bg-primary">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Cenec Moda</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ropa</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Cliente</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+    <!-- añadimos la barra de navegacion -->
+    <?php require './resources/header.php' ?>
+
     <div>
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
             <div class="carousel-indicators">
@@ -60,20 +38,61 @@
             </button>
         </div>
     </div>
-    <h1>Ejercicios DWS</h1>
 
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container ">
+        <div class="row mt-5 mx-auto justify-content-center">
             <div class="col-8">
-                <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">And a fifth one</li>
-                </ul>
+                <p class="list-group">
+                <H1>Ejercicios Desarrollo Web Servidor</H1>
+                </p>
             </div>
         </div>
+
+        <div class="row mt-5 pb-5">
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="./resources/img/html5.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Ropa</h5>
+                        <p class="card-text">
+                            En este apartado podrás ver toda la ropa disponible.
+                            También puedes añadir nuevas prendas , borrarlas y editarlas.            
+                        </p>
+                        <a href="#" class="btn btn-outline-info">Visítanos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="./resources/img/html5.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Cliente</h5>
+                        <p class="card-text">
+                            En este apartado podrás ver todos los clientes.
+                            Tambien puedes elegir el avatar, puedes añadir nuevos
+                            clientes al igual que borrarlos y editarlos.
+                        </p>
+                        <a href="#" class="btn btn-outline-info">Visítanos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="./resources/img/html5.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Compras</h5>
+                        <p class="card-text">
+                            En este apartado podrás ver las Compras realizadas por los clientes
+                            Podrás ver el precio total de la compra.
+                        </p>
+                        <a href="#" class="btn btn-outline-info">Visítanos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
