@@ -55,9 +55,19 @@
                                         //Borrado de la bd 
                                         $sql = "DELETE FROM ropa WHERE id=$identificador";
                                         if ($conexion->query($sql) == "TRUE") {
-                                            echo "<p>Prenda eliminada</p>";
+                                ?>
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <strong>Ropa Elimida!</strong> La prenda de ropa ha sido Borrada con éxito!.
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        <?php
                                         } else {
-                                            echo "<p>Error al elimiar</p>";
+                                        ?>
+                                            <div class="alert alert-danger  cess alert-dismissible fade show" role="alert">
+                                                <strong>Prenda no Borrada!</strong>Se ha producido un error a la hora de Borra la ropa!
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                <?php
                                         }
                                     }
                                 }
