@@ -18,19 +18,20 @@
         <div class="row mt-5 mx-auto justify-content-center">
             <div>
                 <p class="list-group"></p>
-                <H1>Listado De Prendas</H1>
+                <H1>Listado De Clientes</H1>
                 <div class="row">
                     <div class="col-9">
                         <table class="table  table-striped table-hover">
                             <thead class="table-dark">
                                 <tr class="table-active">
+                                    <th>Usuario</th>
                                     <th>Nombre</th>
-                                    <th>Talla</th>
-                                    <th>Precio</th>
-                                    <th>Categoria</th>
+                                    <th>Primer Apellido</th>
+                                    <th>Segundo Apellido</th>
+                                    <th>Fecha Nacimiento</th>
+                                    <th>Avatar</th>
                                     <th></th>
                                     <th></th>
-                                    <th>Imagen</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,24 +74,27 @@
                                 }
                                 ?>
                                 <?php
-                                $sql = "SELECT * FROM ropa";
+                                $sql = "SELECT * FROM cliente";
                                 $resultado = $conexion->query($sql);
                                 //el resultado de la consulta tiene mas de 0 filas entomces..
                                 if ($resultado->num_rows > 0) {
                                     //mientras que se obtengas filas en la row pues mostramos
                                     while ($row = $resultado->fetch_assoc()) {
                                         //guardamos los valores en variables
+                                        $usuario = $row["usuario"];
                                         $nombre = $row["nombre"];
-                                        $talla = $row["talla"];
-                                        $precio = $row["precio"];
-                                        $categoria = $row["categoria"];
+                                        $apellido1 = $row["apellido1"];
+                                        $apellido2 = $row["apellido2"];
+                                        $fecha_nacimineto = $row["fecha_nacimiento"];
                                         $imagen = $row["imagen"];
                                 ?>
                                         <tr>
+                                            <td><?php echo $usuario ?></td>
                                             <td><?php echo $nombre ?></td>
-                                            <td><?php echo $talla ?></td>
-                                            <td><?php echo $precio ?></td>
-                                            <td><?php echo $categoria ?></td>
+                                            <td><?php echo $apellido1 ?></td>
+                                            <td><?php echo $apellido2 ?></td>
+                                            <td><?php echo $fecha_nacimineto ?></td>
+                                            <td><img src="<?php echo $imagen ?>" width="50" height="50"></td>
                                             <td>
                                                 <form action="mostrar_prenda.php" method="GET">
                                                     <button class="btn btn-primary" type="submit">Ver</button>
@@ -103,7 +107,6 @@
                                                     <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                                 </form>
                                             </td>
-                                            <td><img src="<?php echo $imagen ?>" width="50" height="50"></td>
                                         </tr>
                                 <?php
                                     }
@@ -114,7 +117,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="insertar_prenda.php" class="btn btn-primary">Insertar Nueva Prenda</a>
+                <a href="insertar_prenda.php" class="btn btn-primary">Insertar Nuevo Cliente</a>
 
             </div>
 
