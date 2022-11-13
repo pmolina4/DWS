@@ -40,14 +40,19 @@
                                     $precio2 = $_POST["precio"];
                                     $cantidad = $_POST["cantidad"];
 
-                                    $sql2="INSERT INTO `db_tienda_ropa`.`cliente_ropa` (`cliente_id`, `ropa_id`, `cantidad`, `fecha`) VALUES ('2', '$id2', '$cantidad','".date('Y-m-d')."')";
+                                    $sql2 = "INSERT INTO `db_tienda_ropa`.`cliente_ropa` (`cliente_id`, `ropa_id`, `cantidad`, `fecha`) VALUES ('2', '$id2', '$cantidad','" . date('Y-m-d') . "')";
                                     //si la sentencia se ejecuta correctamente mostramos ok si no pues no
                                     if ($conexion->query($sql2) == "TRUE") {
                                 ?>
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                             <strong>Compra Realizada!</strong> La compra se ha realizado con exito!.
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
                                         </div>
+
                                     <?php
                                     } else {
                                     ?>
@@ -111,6 +116,7 @@
                     </div>
                 </div>
                 <a href="../index.php" class="btn btn-primary">Volver</a>
+
 
             </div>
 
