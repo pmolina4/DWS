@@ -47,10 +47,10 @@
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                             <strong>Compra Realizada!</strong> La compra se ha realizado con exito!.
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
+                                        </div>
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <a href="../factura/invoice.php" target="_blank"> <strong>VER FACTURA</strong> </a>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
 
                                     <?php
@@ -116,7 +116,6 @@
                     </div>
                 </div>
                 <a href="../index.php" class="btn btn-primary">Volver</a>
-
 
             </div>
 

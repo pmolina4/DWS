@@ -72,7 +72,7 @@
                             Tambien puedes elegir el avatar, puedes añadir nuevos
                             clientes al igual que borrarlos y editarlos.
                         </p>
-                        <a href="#" class="btn btn-outline-info">Visítanos</a>
+                        <a href="http://localhost/DWS/Proyecto/cliente/index.php" class="btn btn-outline-info">Visítanos</a>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                             En este apartado podrás ver las Compras realizadas por los clientes
                             Podrás ver el precio total de la compra.
                         </p>
-                        <a href="#" class="btn btn-outline-info">Visítanos</a>
+                        <a href="http://localhost/DWS/Proyecto/compras/index.php" class="btn btn-outline-info">Visítanos</a>
                     </div>
                 </div>
             </div>
