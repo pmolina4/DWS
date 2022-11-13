@@ -17,8 +17,9 @@
     <div class="container">
         <div class="row mt-5 mx-auto justify-content-center">
             <div>
-                <p class="list-group"></p>
+                <p class="list-group">
                 <H1>Listado De Clientes</H1>
+                </p>
                 <div class="row">
                     <div class="col-9">
                         <table class="table  table-striped table-hover">
@@ -44,28 +45,30 @@
                                         $identificador = $_POST['id'];
 
                                         //Borrado del fichero de la carpeta 
-                                        $sql2 = "SELECT imagen FROM ropa where id=$identificador";
+                                        $sql2 = "SELECT imagen FROM cliente where id=$identificador";
                                         $resultado = $conexion->query($sql2);
                                         if ($resultado->num_rows > 0) {
                                             while ($row = $resultado->fetch_assoc()) {
                                                 $rutaImg = $row["imagen"];
                                             }
                                         }
-                                        unlink($rutaImg);
+                                        if ($rutaImg != "../resources/cliente/avatarDefecto.png") {
+                                            unlink($rutaImg);
+                                        }
 
                                         //Borrado de la bd 
-                                        $sql = "DELETE FROM ropa WHERE id=$identificador";
+                                        $sql = "DELETE FROM cliente WHERE id=$identificador";
                                         if ($conexion->query($sql) == "TRUE") {
                                 ?>
                                             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                <strong>Ropa Elimida!</strong> La prenda de ropa ha sido Borrada con éxito!.
+                                                <strong>Cliente Eliminado!</strong> El cliente ha sido Borrada con éxito!.
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
                                         <?php
                                         } else {
                                         ?>
                                             <div class="alert alert-danger  cess alert-dismissible fade show" role="alert">
-                                                <strong>Prenda no Borrada!</strong>Se ha producido un error a la hora de Borra la ropa!
+                                                <strong>Cliente no Borrado!</strong>Se ha producido un error a la hora de Borra el cliente!
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
                                 <?php
