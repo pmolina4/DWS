@@ -18,7 +18,7 @@
                                 <a class="nav-link active" href="http://localhost/DWS/Proyecto/cliente/index.php">Cliente</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Compras</a>
+                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/compras/index.php">Compras</a>
                             </li>
                         </ul>
                     </div>
