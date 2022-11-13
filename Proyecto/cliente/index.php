@@ -99,7 +99,7 @@
                                             <td><?php echo $fecha_nacimineto ?></td>
                                             <td><img src="<?php echo $imagen ?>" width="50" height="50"></td>
                                             <td>
-                                                <form action="mostrar_prenda.php" method="GET">
+                                                <form action="mostrar_cliente.php" method="GET">
                                                     <button class="btn btn-primary" type="submit">Ver</button>
                                                     <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
                                                 </form>
