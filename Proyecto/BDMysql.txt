@@ -1,0 +1,56 @@
+
+CREATE TABLE ropa(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+	nombre VARCHAR(80) NOT NULL,
+    talla VARCHAR(10) NOT NULL,
+    precio NUMERIC(6,2) NOT NULL,
+    categoria VARCHAR(20),
+	imaegn VARCHAR  (80) NOT NULL
+);
+
+CREATE TABLE cliente(
+ id INT PRIMARY KEY AUTO_INCREMENT,
+ usuario VARCHAR(80) UNIQUE NOT NULL,
+ nombre VARCHAR  (80) NOT NULL,
+ apellido1 VARCHAR(80) NOT NULL,
+ apellido2 VARCHAR (80) NOT NULL,
+ fecha_nacimiento DATE NOT NULL,
+ imagen VARCHAR  (80) NOT NULL
+
+);
+
+create table cliente_ropa (
+	cliente_id INT,
+	ropa_id INT,
+    cantidad INT,
+    fecha DATE,
+    CONSTRAINT cliente_ropa_pk PRIMARY KEY (cliente_id, ropa_id),
+    CONSTRAINT cliente_ropa_cliente_fk
+		FOREIGN KEY (cliente_id)
+        REFERENCES cliente(id),
+	CONSTRAINT cliente_prenda_prenda_fk
+		FOREIGN KEY (ropa_id)
+		REFERENCES ropa(id),
+	CONSTRAINT chk_cantidad_valida
+		CHECK (cantidad > 0)
+);
+
+ALTER TABLE ropa 
+	ADD CONSTRAINT chk_talla_valida
+    CHECK(talla IN ('XS','S','M','L','XL'));
+
+ALTER TABLE ropa 
+	ADD CONSTRAINT chk_categoria_valida
+    CHECK(talla IN ('CAMISETAS','PANTALONES','ACCESORIOS'));
+
+
+
+
+
+CREATE VIEW vw_cliente_ropa as
+(select c.usuario, p.nombre producto, cp.cantidad, p.precio precio_unitario, cp.fecha
+	from cliente c
+    join cliente_ropa cp on c.id = cp.cliente_id
+    join ropa p on p.id = cp.ropa_id);
+    
+    select * from vw_cliente_ropa;
