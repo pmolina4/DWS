@@ -49,7 +49,21 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            <a href="../factura/invoice.php" target="_blank"> <strong>VER FACTURA</strong> </a>
+                                            <!-- Mandamos los datos del producto comprado por get a la factura -->
+                                            <form action="../factura/invoice.php" target="_blank" method="POST">
+                                                <a>
+                                                    <strong>VER FACTURA</strong>
+                                                    <button class="btn  btn-secondary" type="submit">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                                                        </svg>
+                                                    </button>
+                                                </a>
+                                                <input type="hidden" name="nombre" value="<?php echo $nombre2 ?>">
+                                                <input type="hidden" name="precio" value="<?php echo $precio2 ?>">
+                                                <input type="hidden" name="cantidad" value="<?php echo $cantidad ?>">
+                                            </form>
+
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
 
