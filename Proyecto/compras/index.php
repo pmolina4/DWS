@@ -40,7 +40,7 @@
                                     $precio2 = $_POST["precio"];
                                     $cantidad = $_POST["cantidad"];
 
-                                    $sql2 = "INSERT INTO `db_tienda_ropa`.`cliente_ropa` (`cliente_id`, `ropa_id`, `cantidad`, `fecha`) VALUES ('2', '$id2', '$cantidad','" . date('Y-m-d') . "')";
+                                    $sql2 = "INSERT INTO `db_tienda_ropa`.`cliente_ropa` (`cliente_id`, `ropa_id`, `cantidad`, `fecha` ) VALUES ('14 ', '$id2', '$cantidad','" . date('Y-m-d') ."')";
                                     //si la sentencia se ejecuta correctamente mostramos ok si no pues no
                                     if ($conexion->query($sql2) == "TRUE") {
                                 ?>
@@ -98,7 +98,7 @@
                                                     <input type="hidden" name="nombre" value="<?php echo $nombre ?>">
                                                 </td>
                                                 <td>
-                                                    <?php echo $precio ?>
+                                                    <?php echo $precio?>€
                                                     <input type="hidden" name="precio" value="<?php echo $precio ?>">
                                                 </td>
                                                 <td>

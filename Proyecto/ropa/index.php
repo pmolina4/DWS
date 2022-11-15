@@ -89,7 +89,7 @@
                                         <tr>
                                             <td><?php echo $nombre ?></td>
                                             <td><?php echo $talla ?></td>
-                                            <td><?php echo $precio ?></td>
+                                            <td><?php echo $precio ?>€</td>
                                             <td><?php echo $categoria ?></td>
                                             <td>
                                                 <form action="mostrar_prenda.php" method="GET">
