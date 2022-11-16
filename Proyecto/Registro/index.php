@@ -9,9 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Website CSS style -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
+   
     <!-- Website Font style -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -43,7 +41,7 @@
                 //si la sentencia se ejecuta correctamente mostramos ok si no pues no
                 if ($conexion->query($sql) == "TRUE") {
     ?>
-                    <meta http-equiv="refresh" content="3; url='http://localhost/DWS/Proyecto/'" />
+                    <meta http-equiv="refresh" content="0; url='http://localhost/DWS/Proyecto/'" />
     <?php
                 } else {
                     echo "<p>Error al insertar</p>";
