@@ -1,101 +1,97 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./resources/bootstrap.min.css">
+    <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
+<!--Coded with love by Mutiullah Samim-->
+<?php
+require './resources/util/databases.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST["usuario"];
+    $contrasena = $_POST["contrasena"];
+
+    $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
+
+    if (!empty($usuario) && !empty($contrasena)) {
+        //creamos la sentencia SQL
+        $sql = " SELECT * FROM usuarios WHERE usuario = '$usuario'";
+        $resultado = $conexion->query($sql);
+        if ($resultado->num_rows > 0) {
+            while ($row = $resultado->fetch_assoc()) {
+                $hash_contrasena = $row["contrasena"];
+            }
+            $acceso_valido = password_verify($contrasena, $hash_contrasena);
+
+            if ($acceso_valido == TRUE) {
+?>
+                <meta http-equiv="refresh" content="0; url='http://localhost/DWS/Proyecto/Inicio/'" />
+
+<?php
+            } else {
+                echo "error de pass";
+            }
+        }
+    }
+}
+?>
 
 <body>
-    <!-- añadimos la barra de navegacion -->
-    <?php require './resources/header.php' ?>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <img src="./resources/img/logo.png" class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form action="#" method="POST">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" name="usuario" class="form-control input_user" placeholder="Usuario">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="contrasena" class="form-control input_pass" placeholder="Contrasena">
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">Recordar</label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" name="button" class="btn login_btn">Login</button>
+                        </div>
+                    </form>
+                </div>
 
-    <div>
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./resources/img/cursos-pablo-monteserin.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="./resources/img/seo.png" class="d-block w-100" alt="...">
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        No tienes cuenta ? <a href="./Registro/index.php" class="ml-2">Registrar</a>
+                    </div>
+                    <div class="d-flex justify-content-center links">
+                        <a href="#">Recuperar Contrasena</a>
+                    </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </div>
-
-    <div class="container ">
-        <div class="row mt-5 mx-auto justify-content-center">
-            <div class="col-8">
-                <p class="list-group">
-                <H1>Ejercicios Desarrollo Web Servidor</H1>
-                </p>
-            </div>
-        </div>
-
-        <div class="row mt-5 pb-5">
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="./resources/img/html5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Ropa</h5>
-                        <p class="card-text">
-                            En este apartado podrás ver toda la ropa disponible.
-                            También puedes añadir nuevas prendas , borrarlas y editarlas.
-                        </p>
-                        <a href="../Proyecto/ropa/index.php" class="btn btn-outline-info">Visítanos</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="./resources/img/html5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Cliente</h5>
-                        <p class="card-text">
-                            En este apartado podrás ver todos los clientes.
-                            Tambien puedes elegir el avatar, puedes añadir nuevos
-                            clientes al igual que borrarlos y editarlos.
-                        </p>
-                        <a href="http://localhost/DWS/Proyecto/cliente/index.php" class="btn btn-outline-info">Visítanos</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="./resources/img/html5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Compras</h5>
-                        <p class="card-text">
-                            En este apartado podrás ver las Compras realizadas por los clientes
-                            Podrás ver el precio total de la compra.
-                        </p>
-                        <a href="http://localhost/DWS/Proyecto/compras/index.php" class="btn btn-outline-info">Visítanos</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
