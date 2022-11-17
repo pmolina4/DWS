@@ -34,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $acceso_valido = password_verify($contrasena, $hash_contrasena);
 
             if ($acceso_valido == TRUE) {
-?>
-                <meta http-equiv="refresh" content="0; url='http://localhost/DWS/Proyecto/Inicio/'" />
-
-<?php
+                //creamos la sesion y mandamos el usuarios
+                session_start();
+                $_SESSION["usuario"] = $usuario;
+                header("location: ./Inicio/index.php");
             } else {
                 echo "error de pass";
             }

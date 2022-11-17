@@ -12,8 +12,9 @@
 
 <body>
     <!-- añadimos la barra de navegacion -->
-    <?php require '../resources/header.php' ?>
-
+    <?php
+    require '../resources/header.php';
+    ?>
     <div>
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
             <div class="carousel-indicators">

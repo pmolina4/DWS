@@ -40,9 +40,7 @@
 
                 //si la sentencia se ejecuta correctamente mostramos ok si no pues no
                 if ($conexion->query($sql) == "TRUE") {
-    ?>
-                    <meta http-equiv="refresh" content="0; url='http://localhost/DWS/Proyecto/'" />
-    <?php
+                    header("location: ../index.php");
                 } else {
                     echo "<p>Error al insertar</p>";
                 }
@@ -99,6 +97,7 @@
                             </div>
                         </div>
                     </div>
+                    
 
                     <div class="form-group ">
                         <button href="" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</button>
