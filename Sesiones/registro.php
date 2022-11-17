@@ -28,6 +28,7 @@
             //si la sentencia se ejecuta correctamente mostramos ok si no pues no
             if ($conexion->query($sql) == "TRUE") {
                 echo "<p>Usuario Insertada</p>";
+                header("location: iniciar_sesion.php");
             } else {
                 echo "<p>Error al insertar</p>";
             }

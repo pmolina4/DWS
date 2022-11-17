@@ -30,7 +30,12 @@
                 $acceso_valido = password_verify($contrasena, $hash_contrasena);
 
                 if ($acceso_valido == TRUE) {
-                    echo "valido";
+                    echo " registro valido";
+                    //CREO UN INICIO DE SESION Y MANDO EL USUARIO CON EL ID USUARIO
+                    session_start();
+                    $_SESSION["usuario"] = $usuario;
+                    header("location: index.php");
+
                 } else {
                     echo "error de pass";   
                 }
@@ -40,7 +45,7 @@
     ?>
 
     <div class="container">
-        <h1>Registrate</h1>
+        <h1>Inciar Sesión</h1>
         <div class="row">
             <div class="col-6">
                 <form action="" method="POST">
