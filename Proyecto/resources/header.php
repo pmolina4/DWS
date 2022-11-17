@@ -26,7 +26,10 @@ if ($rol == "administrador") {
                                 <a class="nav-link active" href="http://localhost/DWS/Proyecto/cliente/index.php">Cliente</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/compras/index.php">Compras</a>
+                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/compras/index.php">Tienda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/pedidos/index.php">Pedidos</a>
                             </li>
                         </ul>
                     </div>
@@ -62,7 +65,10 @@ if ($rol == "administrador") {
                                 <a class="nav-link active" aria-current="page" href="http://localhost/DWS/Proyecto/Inicio/">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/compras/index.php">Compras</a>
+                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/compras/index.php">Tienda</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/pedidos/index.php">Pedidos</a>
                             </li>
                         </ul>
                     </div>
