@@ -13,6 +13,7 @@
 <body>
     <!-- añadimos la barra de navegacion -->
     <?php require '../resources/header.php' ?>
+    <?php require '../resources/util/databases.php'; ?>
 
     <div class="container">
         <div class="row mt-5 mx-auto justify-content-center">
@@ -33,14 +34,26 @@
                             </thead>
                             <tbody>
                                 <?php
-                                require '../resources/util/databases.php';
+                                //BUSCAR EL ID DEL USUARIO LOGEADO
+                                $usu = $_SESSION["usuario"];
+                                $sql3 = "SELECT * FROM usuarios where usuario= '$usu'";
+                                $resultado3 = $conexion->query($sql3);
+                                if ($resultado3->num_rows > 0) {
+                                    while ($row3 = $resultado3->fetch_assoc()) {
+                                        $id3 = $row3["id"];
+                                    }
+                                }
+                                ?>
+                                
+                                <?php
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     $id2 = $_POST["id"];
                                     $nombre2 = $_POST["nombre"];
                                     $precio2 = $_POST["precio"];
                                     $cantidad = $_POST["cantidad"];
 
-                                    $sql2 = "INSERT INTO `db_tienda_ropa`.`cliente_ropa` (`cliente_id`, `ropa_id`, `cantidad`, `fecha` ) VALUES ('14 ', '$id2', '$cantidad','" . date('Y-m-d') ."')";
+                                    $sql2 = "INSERT INTO `db_tienda_ropa`.`cliente_ropa` (`cliente_id`, `ropa_id`, `cantidad`, `fecha` ) 
+                                    VALUES ('$id3 ', '$id2', '$cantidad','" . date('Y-m-d') . "')";
                                     //si la sentencia se ejecuta correctamente mostramos ok si no pues no
                                     if ($conexion->query($sql2) == "TRUE") {
                                 ?>
@@ -98,7 +111,7 @@
                                                     <input type="hidden" name="nombre" value="<?php echo $nombre ?>">
                                                 </td>
                                                 <td>
-                                                    <?php echo $precio?>€
+                                                    <?php echo $precio ?>€
                                                     <input type="hidden" name="precio" value="<?php echo $precio ?>">
                                                 </td>
                                                 <td>
