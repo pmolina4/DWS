@@ -20,8 +20,14 @@
                     header("location: iniciar_sesion.php");
                 }else{
                     echo"<p>". $_SESSION["usuario"] ."</p>";// si hay sesion pues mostramos el echo en la pagina destino 
+                    if ($_SESSION["rol"] == "administrador") {
+                        echo"<p>Esto lo pueden ver los usuarios Administradores</p>";
+                    }else{
+                        echo"<p>Esto lo pueden ver los usuarios normales</p>";
+                    }
                 }
             ?>
+
         </div>
     </div>
 

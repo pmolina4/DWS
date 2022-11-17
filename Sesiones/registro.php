@@ -17,13 +17,14 @@
         $nombre = $_POST["nombre"];
         $usuario = $_POST["usuario"];
         $contrasena = $_POST["contrasena"];
+        $rol = $_POST['rol'];
 
         $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
 
         if (!empty($nombre) && !empty($usuario) && !empty($contrasena)) {
             //creamos la sentencia SQL
-            $sql = "INSERT INTO usuarios (contrasena, usuario, nombre)
-                    VALUES('$hash_contrasena', '$usuario','$nombre')";
+            $sql = "INSERT INTO usuarios (contrasena, usuario, nombre, rol)
+                    VALUES('$hash_contrasena', '$usuario','$nombre', '$rol')";
 
             //si la sentencia se ejecuta correctamente mostramos ok si no pues no
             if ($conexion->query($sql) == "TRUE") {
@@ -52,6 +53,12 @@
                     <div class=" form-group mb-3">
                         <label class="form-label">Nombre</label>
                         <input class="form-control" name="nombre" type="text">
+                    </div>
+                    <div class="form-group mb-3">
+                        <select name="rol" id="rol" class="form-select">
+                            <option value="administrador">Administrador</option>
+                            <option value="usuario">Usuario</option>
+                        </select>
                     </div>
                     <div class=" form-group mb-3">
                         <button class="btn btn-primary" type="submit">Registarte</button>

@@ -48,35 +48,43 @@
                 </p>
             </div>
         </div>
+        <?php
+        //cogemos el rol del sesion que esta en el header que lometemeos con un require
+        $rol = $_SESSION["rol"];
+        //mostramos todas las ca
+        if ($rol == "administrador") {
 
-        <div class="row mt-5 pb-5">
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="../resources/img/html5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Ropa</h5>
-                        <p class="card-text">
-                            En este apartado podrás ver toda la ropa disponible.
-                            También puedes añadir nuevas prendas , borrarlas y editarlas.
-                        </p>
-                        <a href="../Proyecto/ropa/index.php" class="btn btn-outline-info">Visítanos</a>
+
+        ?>
+            <div class="row mt-5 pb-5">
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top" src="../resources/img/html5.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Ropa</h5>
+                            <p class="card-text">
+                                En este apartado podrás ver toda la ropa disponible.
+                                También puedes añadir nuevas prendas , borrarlas y editarlas.
+                            </p>
+                            <a href="../Proyecto/ropa/index.php" class="btn btn-outline-info">Visítanos</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="../resources/img/html5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Cliente</h5>
-                        <p class="card-text">
-                            En este apartado podrás ver todos los clientes.
-                            Tambien puedes elegir el avatar, puedes añadir nuevos
-                            clientes al igual que borrarlos y editarlos.
-                        </p>
-                        <a href="http://localhost/DWS/Proyecto/cliente/index.php" class="btn btn-outline-info">Visítanos</a>
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top" src="../resources/img/html5.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Cliente</h5>
+                            <p class="card-text">
+                                En este apartado podrás ver todos los clientes.
+                                Tambien puedes elegir el avatar, puedes añadir nuevos
+                                clientes al igual que borrarlos y editarlos.
+                            </p>
+                            <a href="http://localhost/DWS/Proyecto/cliente/index.php" class="btn btn-outline-info">Visítanos</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
             <div class="col-4">
                 <div class="card">
                     <img class="card-img-top" src="../resources/img/html5.jpg" alt="Card image cap">
@@ -90,7 +98,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
 
 
 

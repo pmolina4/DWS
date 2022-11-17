@@ -9,7 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   
+
     <!-- Website Font style -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -29,14 +29,19 @@
         $usuario = $_POST["username"];
         $contrasena = $_POST["password"];
         $contrasenaConfirm = $_POST["confirm"];
-
+        $rol = $_POST["rol"];
+        if(empty($rol)){
+            $rol = 'usuario';
+        }else{
+            $rol = 'administrador';
+        }
         $hash_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
 
         if (!empty($nombre) && !empty($usuario) && !empty($contrasena) && !empty($contrasenaConfirm)) {
             //creamos la sentencia SQL
             if ($contrasena == $contrasenaConfirm) {
-                $sql = "INSERT INTO usuarios (contrasena, usuario, nombre)
-                VALUES('$hash_contrasena', '$usuario','$nombre')";
+                $sql = "INSERT INTO usuarios (contrasena, usuario, nombre, rol)
+                VALUES('$hash_contrasena', '$usuario','$nombre', '$rol')";
 
                 //si la sentencia se ejecuta correctamente mostramos ok si no pues no
                 if ($conexion->query($sql) == "TRUE") {
@@ -97,7 +102,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
+                    <div class="form-group">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="rol" value="administrador" name="rol">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Administrador</label>
+                        </div>
+                    </div>
 
                     <div class="form-group ">
                         <button href="" type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</button>

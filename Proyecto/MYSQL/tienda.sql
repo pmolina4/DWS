@@ -60,7 +60,7 @@ CREATE TABLE `cliente_ropa` (
   `id_compra` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id_compra`),
   CONSTRAINT `chk_cantidad_valida` CHECK ((`cantidad` > 0))
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `cliente_ropa` (
 
 LOCK TABLES `cliente_ropa` WRITE;
 /*!40000 ALTER TABLE `cliente_ropa` DISABLE KEYS */;
-INSERT INTO `cliente_ropa` VALUES (14,15,1,'2022-11-15',1),(14,15,1,'2022-11-15',2),(14,15,1,'2022-11-15',3);
+INSERT INTO `cliente_ropa` VALUES (14,15,1,'2022-11-15',1),(14,15,1,'2022-11-15',2),(14,15,1,'2022-11-15',3),(14,16,2,'2022-11-17',4);
 /*!40000 ALTER TABLE `cliente_ropa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,9 +115,10 @@ CREATE TABLE `usuarios` (
   `contrasena` varchar(60) NOT NULL,
   `usuario` varchar(20) NOT NULL,
   `nombre` varchar(50) NOT NULL,
+  `rol` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +127,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (9,'$2y$10$mPE69m1alTbhune9icfjz.CqMeVW6k5SQKy75KYAOJe5uHnvVQvla','pablo','pablo');
+INSERT INTO `usuarios` VALUES (9,'$2y$10$mPE69m1alTbhune9icfjz.CqMeVW6k5SQKy75KYAOJe5uHnvVQvla','pablo','pablo',''),(10,'$2y$10$mXHCSDlBVliNs3oqtl8aw.H7Ns5kGSTF58iH4pVRxlp8M5HO4FOH6','alvaro','alvaro',''),(11,'$2y$10$e3eIrOzaHP0UfkLvn4eQL.2NrBBTKkWxsF3zOEhMmNdH.J/BPBf7K','l','l',''),(12,'$2y$10$dcBZ4LBbF4Q8HSedg1N1au3ak61s64I2I.KEnxQLMjo4./Sy6wlv6','jaime','jaime',''),(13,'$2y$10$ulVQNZ0TxQf2//4r3Kz.m.4X3EdCMDCXnFvOKm37H5ypWzsT/XuZO','vicente','vicente','on'),(14,'$2y$10$Bse/jpvTffZXMKU2Hu6rEu4jC7sJyvtrEew2GDP7MnTiHp4NHSKnS','la','la','administrador'),(15,'$2y$10$l6ND5QIeTnVywxgnzvWN3OoOqdacViwII3KC3RDIglmz6.u923C4u','le','le','administrador'),(16,'$2y$10$YzbMWxr0dCx59fPhALSH6OaGWOp7XVK0DwjqPczkPEV8y3kZjGBqW','q','q','administrador'),(17,'$2y$10$Ciwv2gR1LRu1QW2X8p01Ye4.uc0GI.JpNoEMEHM6OaIBlku47k486','a','a','administrador'),(18,'$2y$10$Qot3yJjYq2fURXSSAT2D9OCSe7z0WQFp65Wqec73w1SLrWUs9zPFa','h','h','usuario'),(19,'$2y$10$ghqWrmfgnPIGp58lktBBXeVAGdKbCBRtK1F8Q5iqnevHnn5xtktFy','m','m','administrador');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -139,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-16 11:04:13
+-- Dump completed on 2022-11-17 12:48:34
