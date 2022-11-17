@@ -29,6 +29,7 @@
                                     <th>Ropa</th>
                                     <th>Fecha</th>
                                     <th>Cantidad</th>
+                                    <th>Facturas</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,9 +43,17 @@
                                         $id3 = $row3["id"];
                                     }
                                 }
-                                ?>
 
-                                <?php
+                                $sql_usuario = "SELECT * FROM usuarios WHERE id=$id3";
+                                $resultado_usuario = $conexion->query($sql_usuario);
+                                if ($resultado_usuario->num_rows > 0) {
+                                    //mientras que se obtengas filas en la row pues mostramos
+                                    while ($row_usuario = $resultado_usuario->fetch_assoc()) {
+                                        $usuario = $row_usuario["usuario"];
+                                    }
+                                }
+
+
                                 $sql = "SELECT * FROM db_tienda_ropa.cliente_ropa WHERE cliente_id = $id3";
                                 $resultado = $conexion->query($sql);
                                 //el resultado de la consulta tiene mas de 0 filas entomces..
@@ -55,16 +64,27 @@
                                         $ropaid = $row["ropa_id"];
                                         $cantidad = $row["cantidad"];
                                         $fecha = $row["fecha"];
-
                                 ?>
+
                                         <form action="" method="POST" enctype="multipart/form-data">
                                             <tr>
                                                 <td>
-                                                    <?php echo $id3 ?>
+                                                    <?php echo $usuario ?>
                                                     <input type="hidden" name="nombre" value="<?php echo $nombre ?>">
                                                 </td>
+                                                <?php
+                                                $sql_ropa = "SELECT * FROM ropa WHERE id=$ropaid";
+                                                $resultado_ropa = $conexion->query($sql_ropa);
+                                                if ($resultado_ropa->num_rows > 0) {
+                                                    //mientras que se obtengas filas en la row pues mostramos
+                                                    while ($row_ropa = $resultado_ropa->fetch_assoc()) {
+                                                        $ropa = $row_ropa["nombre"];
+                                                        $imagen_ropa = $row_ropa["imagen"];
+                                                    }
+                                                }
+                                                ?>
                                                 <td>
-                                                    <?php echo $ropaid ?>
+                                                    <?php echo $ropa ?>
                                                     <input type="hidden" name="precio" value="<?php echo $precio ?>">
                                                 </td>
                                                 <td>
@@ -75,7 +95,10 @@
                                                     <?php echo $cantidad ?>
                                                     <input type="hidden" name="precio" value="<?php echo $precio ?>">
                                                 </td>
-                                                
+                                                <td>
+                                                    <button class="btn btn-success" type="submit">Ver Factura</button>
+                                                </td>
+
                                             </tr>
                                         </form>
                                 <?php
