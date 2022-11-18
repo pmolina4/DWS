@@ -56,7 +56,12 @@
                                             }
                                         }
                                         ?>
-                                        <td><?php echo $usuario ?></td>
+                                        <td>
+                                            <form action="./pedidos_usuario.php" method="GET">
+                                                <input type="hidden" name="id_cliente" id="id_cliente" value="<?php echo $cliente_id ?>">
+                                                <button class="btn btn-light" type="submit"><?php echo $usuario ?></button>
+                                            </form>
+                                        </td>
                                         <?php
                                         $sql1 = "SELECT * FROM ropa WHERE id=$ropa_id";
                                         $resultado1 = $conexion->query($sql1);
