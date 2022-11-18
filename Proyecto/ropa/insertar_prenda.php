@@ -13,18 +13,14 @@
 <body>
     <!-- añadimos la barra de navegacion -->
     <?php require '../resources/header.php' ?>
+    <?php require './validacion.php' ?>
     <?php
     //importamos fichero para la conexion de la bd
     require '../resources/util/databases.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nombre = $_POST["nombre"];
-        if (isset($_POST["talla"])) {
-            $talla = $_POST["talla"];
-        } else {
-            $talla = "";
-        }
-        $precio = $_POST["precio"];
+        
+
         if (isset($_POST["categoria"])) {
             $categoria = $_POST["categoria"];
         } else {
@@ -95,6 +91,9 @@
                         <form action="" method="POST" enctype="multipart/form-data">
                             <label class="form-label">Nombre</label>
                             <input type="text" class="form-control" name="nombre">
+                            <span class="error" style="color: rgb(253, 53, 53);">
+                                * <?php if (isset($err_nombre)) echo $err_nombre ?>
+                            </span>
                             <br>
                             <label class="form-label">Talla</label>
                             <select name="talla" id="talla" class="form-select">
@@ -105,9 +104,15 @@
                                 <option value="L">L</option>
                                 <option value="XL">XL</option>
                             </select>
+                            <span class="error" style="color: rgb(253, 53, 53);">
+                                * <?php if (isset($err_talla)) echo $err_talla ?>
+                            </span>
                             <br>
                             <label class="form-label">Precio</label>
                             <input type="text" class="form-control" name="precio">
+                            <span class="error" style="color: rgb(253, 53, 53);">
+                                * <?php if (isset($err_precio)) echo $err_precio ?>
+                            </span>
                             <br>
                             <label class="form-label">Categoria</label>
                             <select name="categoria" id="categoria" class="form-select">
