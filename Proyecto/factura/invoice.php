@@ -3,9 +3,10 @@
 //RECOGEMOS LOS DATOS MANDADOS DE LA PÁGINA DE COMPRAS
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$nombre = $_POST["nombre"];
-	$precio = $_POST["precio"];
+	$ropa = $_POST["ropa"];
 	$cantidad = $_POST["cantidad"];
+	$fecha = $_POST["fecha"];
+	$precio = $_POST["precio"];
 }
 
 
@@ -47,7 +48,7 @@ $pdf->Ln(10);
 $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(30, 7, utf8_decode("Fecha de emisión:"), 0, 0);
 $pdf->SetTextColor(97, 97, 97);
-$pdf->Cell(116, 7, utf8_decode(date("d/m/Y", strtotime("13-09-2022")) . " " . date("h:s A")), 0, 0, 'L');
+$pdf->Cell(116, 7, $fecha);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->SetTextColor(39, 39, 51);
 $pdf->Cell(35, 7, utf8_decode(strtoupper("Factura Nro.")), 0, 0, 'C');
@@ -108,9 +109,9 @@ $pdf->SetTextColor(39, 39, 51);
 
 
 /*----------  Detalles de la tabla  ----------*/
-$pdf->Cell(90, 7, utf8_decode("$nombre"), 'L', 0, 'C');
+$pdf->Cell(90, 7, utf8_decode("$ropa"), 'L', 0, 'C');
 $pdf->Cell(15, 7, utf8_decode("$cantidad"), 'L', 0, 'C');
-$pdf->Cell(25, 7, utf8_decode("$precio EUR"), 'L', 0, 'C');
+$pdf->Cell(25, 7, utf8_decode($precio. "EUR"), 'L', 0, 'C');
 $pdf->Cell(19, 7, utf8_decode("0.00 EUR"), 'L', 0, 'C');
 $pdf->Cell(32, 7, utf8_decode($precio * $cantidad."EUR"), 'LR', 0, 'C');
 $pdf->Ln(7);

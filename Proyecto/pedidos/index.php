@@ -66,7 +66,7 @@
                                         $fecha = $row["fecha"];
                                 ?>
 
-                                        <form action="" method="POST" enctype="multipart/form-data">
+                                        <form action="../factura/invoice.php" target="_blank" method="POST">
                                             <tr>
                                                 <td>
                                                     <?php echo $usuario ?>
@@ -80,23 +80,25 @@
                                                     while ($row_ropa = $resultado_ropa->fetch_assoc()) {
                                                         $ropa = $row_ropa["nombre"];
                                                         $imagen_ropa = $row_ropa["imagen"];
+                                                        $precio = $row_ropa["precio"];
                                                     }
                                                 }
                                                 ?>
                                                 <td>
                                                     <?php echo $ropa ?>
-                                                    <input type="hidden" name="precio" value="<?php echo $precio ?>">
+                                                    <input type="hidden" name="ropa" value="<?php echo $ropa ?>">
                                                 </td>
                                                 <td>
                                                     <?php echo $fecha ?>
-                                                    <input type="hidden" name="precio" value="<?php echo $precio ?>">
+                                                    <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
                                                 </td>
                                                 <td>
                                                     <?php echo $cantidad ?>
-                                                    <input type="hidden" name="precio" value="<?php echo $precio ?>">
+                                                    <input type="hidden" name="cantidad" value="<?php echo $cantidad ?>">
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-success" type="submit">Ver Factura</button>
+                                                        <button class="btn btn-success" type="submit">Ver Factura</button>
+                                                        <input type="hidden" name="precio" value="<?php echo $precio ?>">
                                                 </td>
 
                                             </tr>

@@ -66,7 +66,7 @@
                                 En este apartado podrás ver toda la ropa disponible.
                                 También puedes añadir nuevas prendas , borrarlas y editarlas.
                             </p>
-                            <a href="../Proyecto/ropa/index.php" class="btn btn-outline-info">Visítanos</a>
+                            <a href="http://localhost/DWS/Proyecto/ropa/index.php" class="btn btn-outline-info">Visítanos</a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 <div class="card">
                     <img class="card-img-top" src="../resources/img/html5.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Compras</h5>
+                        <h5 class="card-title">Tienda</h5>
                         <p class="card-text">
                             En este apartado podrás ver las Compras realizadas por los clientes
                             Podrás ver el precio total de la compra.

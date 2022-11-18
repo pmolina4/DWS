@@ -31,6 +31,9 @@ if ($rol == "administrador") {
                             <li class="nav-item">
                                 <a class="nav-link active" href="http://localhost/DWS/Proyecto/pedidos/index.php">Pedidos</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="http://localhost/DWS/Proyecto/pedidos/historialPedidos.php">Hitorial Pedidos</a>
+                            </li>
                         </ul>
                     </div>
                     <a href="http://localhost/DWS/Proyecto/resources/cerrarSesion/cerrarSesion.php"><img src="../resources//img/check-out.png" style="width: 30px;"></a>
