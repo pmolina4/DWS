@@ -1,0 +1,9 @@
+Crear proyecto 
+composer create-project laravel/laravel example-app
+
+Arrancar server
+php artisan serve
+
+
+Controladores
+php artisan make:controller PhotoController --resource
