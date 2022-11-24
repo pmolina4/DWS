@@ -27,8 +27,11 @@ class VideojuegosController extends Controller
             ["Nba", 30, 6, "Juego de baloncesto"]
         ];
 
+        $mensjae ="Mensjae juegos";
+
         return view('juegos/index', [
-            'videojuegos' => $videojuegos
+            'videojuegos' => $videojuegos,
+            "mensaje" => $mensjae
         ]);
     }
 

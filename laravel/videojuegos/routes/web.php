@@ -37,6 +37,5 @@ Route::get('/juegos', [VideojuegosController::class, 'index']);
 
 Route::get('/juegos/create', [VideojuegosController::class, 'create']);
 
-Route::post('/juegos/create',[VideojuegosController::class, 'postJuego']);
 
 

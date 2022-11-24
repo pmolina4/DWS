@@ -7,3 +7,7 @@ php artisan serve
 
 Controladores
 php artisan make:controller PhotoController --resource
+
+
+MODELO
+php artisan make:Model Videojuegos -m
