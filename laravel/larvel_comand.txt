@@ -9,5 +9,12 @@ Controladores
 php artisan make:controller PhotoController --resource
 
 
-MODELO
+CREAR MODELO
 php artisan make:Model Videojuegos -m
+
+EJECUTAR LAS MIGRACIONES
+php artisan migrate
+
+Para aplicar cambios en algo ya existente
+php artisan migrate:reset
+ 

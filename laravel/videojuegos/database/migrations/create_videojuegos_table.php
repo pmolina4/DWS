@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('videojuegos', function (Blueprint $table) {
             $table->id();
+            $table -> string('titulo')->unique();
+            $table -> double('precio');
+            $table -> integer('pegi');
+            $table -> string('descripcion');
             $table->timestamps();
         });
     }
