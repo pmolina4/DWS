@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Videojuego;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class VideojuegosController extends Controller
 {
 
-    public function postJuego(){
+    public function postJuego()
+    {
         return "Respuesta form";
     }
 
@@ -19,15 +21,12 @@ class VideojuegosController extends Controller
      */
     public function index()
     {
-        //Array 
-        $videojuegos = [
-            ["gta", 60, 18, "Juego mundo abierto"],
-            ["zelda", 40, 12, "Juego accion"],
-            ["FIFA23", 70, 12, "Juego de futbol"],
-            ["Nba", 30, 6, "Juego de baloncesto"]
-        ];
+        //PARA USAR EL MODELO  DE VIDEOJUEGO EN EL CONTROLADOR
+        $videojuegos = Videojuego::all();
 
-        $mensjae ="Mensjae juegos";
+        
+
+        $mensjae = "Mensjae juegos";
 
         return view('juegos/index', [
             'videojuegos' => $videojuegos,
@@ -46,14 +45,23 @@ class VideojuegosController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Donde almacenamos datos del fomrulario.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        //Recuperamos los datos del formulario (createblade)
+        $videojuego = new Videojuego;
+        $videojuego -> titulo = $request -> input('titulo');
+        $videojuego -> precio = $request -> input('precio');
+        $videojuego -> pegi = $request -> input('pegi');
+        $videojuego -> descripcion = $request -> input('descripcion');
+        $videojuego -> save();
+
+        return redirect('/juegos');
+
     }
 
     /**
@@ -64,7 +72,11 @@ class VideojuegosController extends Controller
      */
     public function show($id)
     {
-        //
+        //recogemos el id del videojuego marcado
+        $videojuego = Videojuego::find($id);
+        return view('juegos/show',[
+            'videojuego' => $videojuego
+        ]);
     }
 
     /**
@@ -75,7 +87,11 @@ class VideojuegosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $videojuego = Videojuego::find($id);
+
+        return view('juegos/edit', [
+            'videojuego' => $videojuego
+        ]);
     }
 
     /**
@@ -87,7 +103,7 @@ class VideojuegosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -98,6 +114,9 @@ class VideojuegosController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('videojuegos')-> where ('id',"=",$id)->delete();
+
+        return redirect('/juegos');
     }
 }

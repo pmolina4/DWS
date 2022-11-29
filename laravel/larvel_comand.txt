@@ -1,20 +1,22 @@
-Crear proyecto 
+//Crear proyecto 
 composer create-project laravel/laravel example-app
 
 Arrancar server
 php artisan serve
 
 
-Controladores
+//Controladores
 php artisan make:controller PhotoController --resource
 
 
-CREAR MODELO
+//CREAR MODELO
 php artisan make:Model Videojuegos -m
 
-EJECUTAR LAS MIGRACIONES
+//EJECUTAR LAS MIGRACIONES
 php artisan migrate
 
-Para aplicar cambios en algo ya existente
+//Para aplicar cambios en algo ya existente
 php artisan migrate:reset
  
+//Para Ver las rutas 
+php artisan route:list

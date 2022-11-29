@@ -4,27 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Edit Juego</title>
 </head>
 
 <body>
     <div class="container">
-        @include('../header')
-        <h1>Registrar VideoJuego</h1>
+        @include('header')
+        <h1>Editar Juego</h1>
         <br>
-        <!-- action tiene la ruta del store de el controlador -->
         <form action="{{ route('juegos.index') }}" method="POST" enctype="multipart/form-data">
-            @csrf <!-- Protección básica para los  form -->
+            @csrf
+            <!-- Protección básica para los  form -->
             <label class="form-label">Titulo</label>
-            <input type="text" class="form-control" name="titulo">
+            <input type="text" class="form-control" name="titulo" value="{{ $videojuego->titulo }}">
             <br>
             <label class="form-label">Precio</label>
-            <input type="number" class="form-control" name="precio">
+            <input type="number" class="form-control" name="precio" value="{{ $videojuego->precio }}">
             <br>
             <label class="form-label">PEGI</label>
-            <select name="pegi" id="pegi" class="form-select">
+            <select name="pegi" id="pegi" class="form-select" value="{{ $videojuego->pegi }}">
                 <option value="" selected default hidden>Seleccione una categoria</option>
                 <option value="3">3</option>
                 <option value="7">7</option>
@@ -34,7 +35,7 @@
             </select>
             <br>
             <label class="form-label">Descripcion</label>
-            <textarea  class="form-control" name="descripcion"></textarea>
+            <textarea class="form-control" name="descripcion" >{{ $videojuego->descripcion }}</textarea>
             <br>
             <button class="btn btn-primary" type="submit">Crear</button>
             <a class="btn btn-secondary" href="{{ route('juegos.index') }}">Volver</a>
@@ -42,7 +43,11 @@
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

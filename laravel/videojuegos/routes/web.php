@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompaniasController;
 use App\Http\Controllers\ConsolasController;
 use App\Http\Controllers\VideojuegosController;
 use Illuminate\Support\Facades\Route;
@@ -29,13 +30,9 @@ Route::get('/consolas', [ConsolasController::class, 'index']);
 Route::get('/consolas/create', [ConsolasController::class, 'create']);
 
 //----------VIDEOJUEGOS-----------------
-Route::get('/juegos/videojuegos', function(){
-    return view('juegos/videojuegos');
-});
+//Con esto coge todas las rutas del controlador de golpe (index, create , update...)
+Route::resource('/juegos', VideojuegosController::class);
 
-Route::get('/juegos', [VideojuegosController::class, 'index']);
+//------------------COMPANIAS------------//
 
-Route::get('/juegos/create', [VideojuegosController::class, 'create']);
-
-
-
+Route::resource('/companias', CompaniasController::class);
