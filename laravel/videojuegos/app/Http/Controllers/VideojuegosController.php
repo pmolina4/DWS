@@ -24,7 +24,7 @@ class VideojuegosController extends Controller
         //PARA USAR EL MODELO  DE VIDEOJUEGO EN EL CONTROLADOR
         $videojuegos = Videojuego::all();
 
-        
+
 
         $mensjae = "Mensjae juegos";
 
@@ -54,14 +54,13 @@ class VideojuegosController extends Controller
     {
         //Recuperamos los datos del formulario (createblade)
         $videojuego = new Videojuego;
-        $videojuego -> titulo = $request -> input('titulo');
-        $videojuego -> precio = $request -> input('precio');
-        $videojuego -> pegi = $request -> input('pegi');
-        $videojuego -> descripcion = $request -> input('descripcion');
-        $videojuego -> save();
+        $videojuego->titulo = $request->input('titulo');
+        $videojuego->precio = $request->input('precio');
+        $videojuego->pegi = $request->input('pegi');
+        $videojuego->descripcion = $request->input('descripcion');
+        $videojuego->save();
 
         return redirect('/juegos');
-
     }
 
     /**
@@ -74,7 +73,7 @@ class VideojuegosController extends Controller
     {
         //recogemos el id del videojuego marcado
         $videojuego = Videojuego::find($id);
-        return view('juegos/show',[
+        return view('juegos/show', [
             'videojuego' => $videojuego
         ]);
     }
@@ -105,12 +104,12 @@ class VideojuegosController extends Controller
     {
         $videojuego = Videojuego::find($id);
 
-        $videojuego -> titulo = $request -> input('titulo');
-        $videojuego -> precio = $request -> input('precio');
-        $videojuego -> pegi = $request -> input('pegi');
-        $videojuego -> descripcion = $request -> input('descripcion');
+        $videojuego->titulo = $request->input('titulo');
+        $videojuego->precio = $request->input('precio');
+        $videojuego->pegi = $request->input('pegi');
+        $videojuego->descripcion = $request->input('descripcion');
 
-        $videojuego -> save();
+        $videojuego->save();
 
         return redirect('/juegos');
     }
@@ -124,8 +123,26 @@ class VideojuegosController extends Controller
     public function destroy($id)
     {
 
-        DB::table('videojuegos')-> where ('id',"=",$id)->delete();
+        DB::table('videojuegos')->where('id', "=", $id)->delete();
 
         return redirect('/juegos');
+    }
+
+    /**
+     * Busca todos los videojuegos que contengan la palabra introducida en el buscador
+     * 
+     * @param String $titulo
+     */
+    public function search(Request $request)
+    {
+        $titulo = $request -> input('buscador');
+        $videojuegos = DB::table('videojuegos')
+            ->where('titulo', 'like', '%' . $titulo . '%')
+            ->get();
+
+            return view('juegos/search',[
+                'videojuegos' => $videojuegos
+            ]);
+            
     }
 }

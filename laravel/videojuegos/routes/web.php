@@ -29,10 +29,20 @@ Route::get('/consolas', [ConsolasController::class, 'index']);
 
 Route::get('/consolas/create', [ConsolasController::class, 'create']);
 
+
+
 //----------VIDEOJUEGOS-----------------
+
+
+//Ruta para la funcion creada en el controlador de videojuagos llamada la funcion search
+Route::get('/juegos/search',[VideojuegosController::class,'search'])
+                            ->name('juegos.search');
+
+
 //Con esto coge todas las rutas del controlador de golpe (index, create , update...)
 Route::resource('/juegos', VideojuegosController::class);
 
 //------------------COMPANIAS------------//
 
 Route::resource('/companias', CompaniasController::class);
+

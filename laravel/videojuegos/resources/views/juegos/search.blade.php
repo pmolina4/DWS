@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <title>Index</title>
+    <title>Search</title>
 </head>
 
 <body>
@@ -16,21 +16,8 @@
         @include('../header')
 
         <div class="row mt-5 mx-auto justify-content-center">
-            <h1>Index Videojuegos</h1>
-            <!-- Para mostrar variables sin tener que abrir las etiquetas de php -->
-            <p>{{ $mensaje }}</p>
-            <form method="GET" action={{ route('juegos.search') }}>
-                @csrf
-                <div class="row mb-3">
-                    <label for="colFormLabel" class="col-sm-2 col-form-label">Buscar por Titulo</label>
-                    <div class="col-sm-7">
-                        <input type="text" name="buscador" class="form-control" id="colFormLabel" placeholder="col-form-label">
-                    </div>
-                    <div class="col-sm-3">
-                        <button class="btn btn-secondary" type="submit">Buscar</button>
-                    </div>
-                </div>
-            </form>
+            <h1>Busqueda de Videojuegos</h1>
+
             <div class="row">
                 <div class="col-12">
                     <table class="table  table-striped table-hover">
