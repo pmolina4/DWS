@@ -18,6 +18,9 @@
         <p>Precio: {{ $videojuego -> precio }}</p>
         <p>PEGI: {{ $videojuego -> pegi }}</p>
         <p>Descripcion: {{ $videojuego -> descripcion }}</p>
+        <form method="GET" action={{ route('juegos.edit', ['juego' => $videojuego -> id]) }} >
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
     </div>
 
 

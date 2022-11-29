@@ -15,7 +15,8 @@
         @include('header')
         <h1>Editar Juego</h1>
         <br>
-        <form action="{{ route('juegos.index') }}" method="POST" enctype="multipart/form-data">
+        <form method="POST" action={{ route('juegos.update', ['juego' => $videojuego -> id]) }} >
+            {{ method_field('PUT') }}
             @csrf
             <!-- Protección básica para los  form -->
             <label class="form-label">Titulo</label>
@@ -26,7 +27,6 @@
             <br>
             <label class="form-label">PEGI</label>
             <select name="pegi" id="pegi" class="form-select" value="{{ $videojuego->pegi }}">
-                <option value="" selected default hidden>Seleccione una categoria</option>
                 <option value="3">3</option>
                 <option value="7">7</option>
                 <option value="12">12</option>
@@ -37,7 +37,7 @@
             <label class="form-label">Descripcion</label>
             <textarea class="form-control" name="descripcion" >{{ $videojuego->descripcion }}</textarea>
             <br>
-            <button class="btn btn-primary" type="submit">Crear</button>
+            <button class="btn btn-primary" type="submit">Guardar</button>
             <a class="btn btn-secondary" href="{{ route('juegos.index') }}">Volver</a>
         </form>
     </div>
