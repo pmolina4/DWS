@@ -17,7 +17,7 @@
 
         <div class="row mt-5 mx-auto justify-content-center">
             <h1>Busqueda de Videojuegos</h1>
-
+            
             <div class="row">
                 <div class="col-12">
                     <table class="table  table-striped table-hover">

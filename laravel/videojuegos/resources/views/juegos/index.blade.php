@@ -24,7 +24,7 @@
                 <div class="row mb-3">
                     <label for="colFormLabel" class="col-sm-2 col-form-label">Buscar por Titulo</label>
                     <div class="col-sm-7">
-                        <input type="text" name="buscador" class="form-control" id="colFormLabel" placeholder="col-form-label">
+                        <input type="text" name="buscador" class="form-control" id="colFormLabel" placeholder="Búsqueda">
                     </div>
                     <div class="col-sm-3">
                         <button class="btn btn-secondary" type="submit">Buscar</button>

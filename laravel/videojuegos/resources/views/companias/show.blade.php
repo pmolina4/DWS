@@ -14,9 +14,12 @@
     <div class="container">
         @include('header')
         <h1>Detalles Compania</h1>
-        <p>Nombre: {{ $compania -> nombre }}</p>
-        <p>Sede: {{ $compania -> sede }}</p>
-        <p>Fecha: {{ $compania -> fecha_fundacion }}</p>
+        <p>Nombre: {{ $compania->nombre }}</p>
+        <p>Sede: {{ $compania->sede }}</p>
+        <p>Fecha: {{ $compania->fecha_fundacion }}</p>
+        <form method="GET" action={{ route('companias.edit', ['compania' => $compania -> id]) }} >
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
     </div>
 
 
