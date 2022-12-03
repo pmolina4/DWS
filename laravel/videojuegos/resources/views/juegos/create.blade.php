@@ -23,6 +23,9 @@
             <label class="form-label">Precio</label>
             <input type="number" class="form-control" name="precio">
             <br>
+            <label class="form-label">Id_compania</label>
+            <input type="number" class="form-control" name="id_compania">
+            <br>
             <label class="form-label">PEGI</label>
             <select name="pegi" id="pegi" class="form-select">
                 <option value="" selected default hidden>Seleccione una categoria</option>

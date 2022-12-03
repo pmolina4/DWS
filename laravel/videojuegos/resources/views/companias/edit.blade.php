@@ -14,15 +14,16 @@
         <br>
         <!-- action tiene la ruta del store de el controlador -->
         <form action={{ route('companias.update',  ['compania' => $compania -> id]) }} method="POST">
+            {{ method_field('PUT') }}
             @csrf <!-- Protección básica para los  form -->
             <label class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="nombre">
+            <input type="text" class="form-control" name="nombre" value="{{ $compania->nombre }}">
             <br>
             <label class="form-label">Sede</label>
-            <input type="text" class="form-control" name="sede">
+            <input type="text" class="form-control" name="sede" value="{{ $compania->sede }}">
             <br>
             <label class="form-label">Fecha Fundacion</label>
-            <input type="date"  class="form-control" name="fecha">
+            <input type="date"  class="form-control" name="fecha" value="{{ $compania->fecha_fundacion }}">
             <br>
             <button class="btn btn-primary" type="submit">Guardar</button>
             <a class="btn btn-secondary" href="{{ route('companias.index') }}">Volver</a>

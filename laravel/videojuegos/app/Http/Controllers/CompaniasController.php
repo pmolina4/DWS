@@ -96,7 +96,15 @@ class CompaniasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $compania = Compania::find($id);
+
+        $compania->nombre = $request->input('nombre');
+        $compania->sede = $request->input('sede');
+        $compania->fecha_fundacion = $request->input('fecha');
+
+        $compania->save();
+
+        return redirect('/companias');
     }
 
     /**
@@ -110,4 +118,4 @@ class CompaniasController extends Controller
         DB::table('companias')-> where ('id',"=",$id)->delete();
         return redirect('/companias');
     }
-}
+}   

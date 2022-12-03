@@ -58,6 +58,7 @@ class VideojuegosController extends Controller
         $videojuego->precio = $request->input('precio');
         $videojuego->pegi = $request->input('pegi');
         $videojuego->descripcion = $request->input('descripcion');
+        $videojuego->compania_id = $request->input('id_compania');
         $videojuego->save();
 
         return redirect('/juegos');
@@ -108,7 +109,6 @@ class VideojuegosController extends Controller
         $videojuego->precio = $request->input('precio');
         $videojuego->pegi = $request->input('pegi');
         $videojuego->descripcion = $request->input('descripcion');
-
         $videojuego->save();
 
         return redirect('/juegos');
@@ -135,14 +135,13 @@ class VideojuegosController extends Controller
      */
     public function search(Request $request)
     {
-        $titulo = $request -> input('buscador');
+        $titulo = $request->input('buscador');
         $videojuegos = DB::table('videojuegos')
             ->where('titulo', 'like', '%' . $titulo . '%')
             ->get();
 
-            return view('juegos/search',[
-                'videojuegos' => $videojuegos
-            ]);
-            
+        return view('juegos/search', [
+            'videojuegos' => $videojuegos
+        ]);
     }
 }

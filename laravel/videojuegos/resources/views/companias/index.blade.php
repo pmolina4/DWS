@@ -23,15 +23,26 @@
                             <th>Nombre</th>
                             <th>Sede</th>
                             <th>Fecha</th>
+                            <th>Juegos</th>
                             <th></th>
                             <th></th>
                         </tr>
+
                         {{-- Comentaro Blade  --}}
                         @foreach ($companias as $compania)
+                            @php
+                                $juegos = $compania-> juegos;
+                            @endphp
                             <tr>
                                 <td>{{ $compania->nombre }}</td>
                                 <td>{{ $compania->sede }}</td>
                                 <td>{{ $compania->fecha_fundacion }}</td>
+                                <td>
+                                    <!-- Recorremos los productos que hemos guardado y accedemos ha su nombre -->
+                                    @foreach ($juegos as $juego)
+                                        <li>{{ $juego -> titulo }}</li>
+                                    @endforeach
+                                </td>
                                 <td>
                                     <form action={{ route('companias.show', ['compania' => $compania->id]) }}
                                         method="GET">
@@ -39,7 +50,8 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action={{ route('companias.destroy', ['compania' => $compania -> id]) }} method="POST">
+                                    <form action={{ route('companias.destroy', ['compania' => $compania->id]) }}
+                                        method="POST">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <button class="btn btn-danger" type="submit">Borrar</button>
