@@ -15,4 +15,12 @@ class Videojuego extends Model
         //Se pone para hacer la relaccion con compania esta es la parte de N
         return $this->belongsTo(Compania::class);
     }
+
+    
+    public function consolas(){
+        return $this->belongsToMany(
+            Consola::class, 'consolas_videojuegos', 'videojuego_id', 'consola_id'
+        );
+    }
+    
 }

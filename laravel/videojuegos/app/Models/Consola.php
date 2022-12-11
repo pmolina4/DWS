@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Consola extends Model
 {
     use HasFactory;
+
+
+    
+
+    public function videojuegos()
+    {
+        return $this->belongsToMany(
+            Videojuego::class, 'consolas_videojuegos','consola_id', 'videojuego_id'
+        );
+    }
+    
 }
