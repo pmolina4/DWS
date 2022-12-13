@@ -25,7 +25,7 @@
     array_push($personajes, $nuevo_personaje);
 
     //MODIFICAMOS UN PERSONAJE DE EL ARRAY
-    $personaje[1][0] = "Alvaro";
+    $personajes[1][0] = "Alvaro";
 
     //ELIMINAMOS UN PERSONAJE DE EL ARRAY
     unset($personajes[0]);
