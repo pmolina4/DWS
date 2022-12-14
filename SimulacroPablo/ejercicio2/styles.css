@@ -1,0 +1,39 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    background: aqua;
+
+}
+form{
+    color: #999;
+    border-radius: 12px;
+    background-color: white;
+    padding: 10px;
+    margin: 0 auto;
+    width: 300px;
+}
+input, textarea{
+    border: 0;
+    outline: none;
+
+    width: 280px;
+}
+
+.field{
+    border: solid 1px #ccc;
+    padding: 10px;
+
+    
+}
+
+.field:focus{
+    border-color: #18A383;
+}
+
+.center-content{
+    text-align: center;
+}
+
+span.error {
+    color: rgb(253, 53, 53);
+}
