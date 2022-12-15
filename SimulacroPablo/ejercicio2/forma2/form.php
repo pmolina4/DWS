@@ -36,7 +36,7 @@
                 </span>
                 <br>
                 <br>
-                <div class="inputContainer">
+                <div class="inputContainer" class="select">
                     <select name="genero">
                         <option value="" selected disabled hidden>-- Selecciona el género --</option>
                         <option value="mujer">Mujer</option>
@@ -59,7 +59,7 @@
                 </span>
                 <br>
                 <br>
-                <input type="submit" class="submitBtn" value="Sign up">
+                <input type="submit" class="submitBtn" value="Enviar">
             </form>
         </div>
     </div>
