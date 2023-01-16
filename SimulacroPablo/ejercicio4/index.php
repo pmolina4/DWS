@@ -19,7 +19,7 @@
 
         $id = $_POST["id"];
 
-        $sql_eliminar = "DELETE FROM paises WHERE id = '$id';";
+        $sql_eliminar = "DELETE FROM paises WHERE id = '$id'";
 
         $conexion->query($sql_eliminar);
     }
